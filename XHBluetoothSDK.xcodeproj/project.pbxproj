@@ -777,7 +777,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/XHBluetoothSDK/SDK",
 				);
-				INFOPLIST_FILE = "/Users/xinhuapro/Desktop/GreenLandSDK----iOS-master/XHBluetoothSDK/Demo/Info.plist";
+				INFOPLIST_FILE = "/Users/xinhuapro/Git仓库/LD-APP-BluetoothSDK-IOS/XHBluetoothSDK/Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = XH.XHBluetoothSDK;
@@ -794,7 +794,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/XHBluetoothSDK/SDK",
 				);
-				INFOPLIST_FILE = "/Users/xinhuapro/Desktop/GreenLandSDK----iOS-master/XHBluetoothSDK/Demo/Info.plist";
+				INFOPLIST_FILE = "/Users/xinhuapro/Git仓库/LD-APP-BluetoothSDK-IOS/XHBluetoothSDK/Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = XH.XHBluetoothSDK;

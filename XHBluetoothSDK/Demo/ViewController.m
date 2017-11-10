@@ -42,7 +42,7 @@
     
     [self presentViewController:alertController animated:YES completion:nil];
     [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(dismissAlertView:) userInfo:alertController repeats:NO];
-    
+
 }
 
 - (void)viewWillAppear:(BOOL)animated{
