@@ -20,7 +20,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *scanResult;
 @property (nonatomic ,strong)  NSArray *macStr;
-@property (nonatomic ,assign)  NSInteger buildingId;
+@property (nonatomic ,assign)  NSString *buildingId;
 @property (nonatomic ,strong)  NSString *token;
 @property (nonatomic ,strong)  NSString *deviceKey;
 @property (nonatomic ,assign)  NSMutableArray *manufacturerId;
@@ -47,11 +47,14 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-    self.buildingId = 1;
-    self.mobile = @"13813486976";
+    self.buildingId = @"";
+    self.mobile = @"";
+    //self.mobile = @"13813486976";
+    //self.mobile = self.phoneTextField.text;
     CacheDate *date = [CacheDate new];
-    [date loadPublicDeviceWithBuildingId:self.buildingId];
-    [date loadPrivateDeviceWithMobile:self.mobile BuildingId:self.buildingId];
+   // [date loadPublicDeviceWithBuildingId:self.buildingId];
+   // [date loadPrivateDeviceWithMobile:self.mobile BuildingId:self.buildingId];
+    [date loadAlleviceWithMobile:self.mobile BuildingId:self.buildingId];
     
     
 }
@@ -96,7 +99,7 @@
     [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(dismissAlertView:) userInfo:alertController repeats:NO];
     
 }
-//扫描设备
+//查设备
 - (IBAction)checkDevice:(id)sender {
     XHDeviceScan *scan = [XHDeviceScan new];
     [scan showDevice];
@@ -184,6 +187,9 @@
     [chooseFloor openElevator:macStr deviceKey:deviceKey code:code floor:floor];
 }
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [_phoneTextField resignFirstResponder];
+}
 
 
 - (void)didReceiveMemoryWarning {

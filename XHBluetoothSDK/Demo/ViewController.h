@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *firstFloorBtn;
 @property (weak, nonatomic) IBOutlet UIButton *secondFloorBtn;
 @property (weak, nonatomic) IBOutlet UIButton *thirdFloorBtn;
+@property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 
 
 @end

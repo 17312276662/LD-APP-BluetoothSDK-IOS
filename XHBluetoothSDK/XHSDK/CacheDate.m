@@ -10,12 +10,65 @@
 #import "JWHttpTool.h"
 #import "MJExtension.h"
 #import "ContentModel.h"
+#import "ResourceDatasModel.h"
 #import "ResourceKeyModel.h"
 #import <CommonCrypto/CommonDigest.h>
 #define HTTP_CONECT(x,y)            [NSString stringWithFormat:@"%@%@",x,y]
 #define BASE_URL                    @"http://auth.greenlandjs.com:8099/LD-PermissionSystem/appApi"
 @implementation CacheDate
 
+- (void)loadAlleviceWithMobile:(NSString *)mobile BuildingId:(NSString *)buildingId{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    NSString *key =@"123qweASDzxc";
+    NSString *str = [NSString stringWithFormat:@"buildingId=%@&mobile=%@&%@",buildingId,mobile,key];
+    const char *cStr = [str UTF8String];
+    unsigned char digest[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(cStr, (CC_LONG)strlen(cStr), digest);
+    NSMutableString *token = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    for(int  i =0; i<CC_MD5_DIGEST_LENGTH;i++){
+        [token appendFormat:@"%02x", digest[i]];//小写x表示输出的是小写MD5，大写X表示输出的是大写MD5
+    }
+    params[@"mobile"] = mobile;
+    params[@"buildingId"] = buildingId;
+    params[@"token"] = @"508b2483832f141306c43459b9199bbe";
+    
+    [JWHttpTool get:HTTP_CONECT(BASE_URL,@"/queryAvaiableResByMobile") params:params success:^(id json) {
+        NSArray *list = [ContentModel mj_objectArrayWithKeyValuesArray:json[@"content"]];
+        self.typeNameArr = [NSMutableArray new];
+        self.macArr = [NSMutableArray new];
+        self.passWordArr = [NSMutableArray new];
+        self.manufacturerIdArr = [NSMutableArray new];
+        self.typeIdArr = [NSMutableArray new];
+        for (ContentModel *contentModel in list) {
+            [self.nameArr addObject:contentModel.name];
+            for (NSDictionary *dict in contentModel.resourceDatas) {
+                ResourceDatasModel *resourceDatasModel = [ResourceDatasModel mj_objectWithKeyValues:dict];
+                [self.typeNameArr addObject:resourceDatasModel.typeName];
+                [self.typeIdArr addObject:resourceDatasModel.typeId];
+                for (NSDictionary *dict in resourceDatasModel.resourceKeys) {
+                    ResourceKeyModel *resourceKeyModel = [ResourceKeyModel mj_objectWithKeyValues:dict];
+                    [self.macArr addObject:resourceKeyModel.mac];
+                    [self.manufacturerIdArr addObject:@(resourceKeyModel.manufacturerId)];
+                    [self.passWordArr addObject:resourceKeyModel.password];
+                }
+                
+//                ResourceKeyModel *resourceKeysModel = [ResourceKeyModel mj_objectWithKeyValues:dict];
+//                [self.macArr addObject:resourceKeysModel.mac];
+//                [self.passWordArr addObject:resourceKeysModel.password];
+//                [self.manufacturerIdArr addObject:@(resourceKeysModel.manufacturerId)];
+            }
+        }
+        NSLog(@"typeIdArr:%@",self.typeIdArr);
+        NSLog(@"typeNameArr:%@",self.typeNameArr);
+        NSLog(@"manufacturerIdArr:%@",self.manufacturerIdArr);
+        NSLog(@"macArr:%@",self.macArr);
+        NSLog(@"passWordArr:%@",self.passWordArr);
+        NSLog(@"联网加载的所有可用设备json:%@",json);
+    } failure:^(NSError *error) {
+        NSLog(@"稍后再试");
+    }];
+}
+/*
 - (void)loadPublicDeviceWithBuildingId:(NSInteger)buildingId{
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     NSString *key =@"123qweASDzxc";
@@ -75,4 +128,6 @@
         NSLog(@"稍后再试");
     }];
 }
+*/
+
 @end

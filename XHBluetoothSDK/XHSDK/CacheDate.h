@@ -13,10 +13,14 @@
 @property (nonatomic ,strong)  NSMutableArray *passWordArr;
 @property (nonatomic ,strong)  NSMutableArray *manufacturerIdArr;
 @property (nonatomic ,strong)  NSMutableArray *typeNameArr;
+@property (nonatomic ,strong)  NSMutableArray *nameArr;
+@property (nonatomic ,strong)  NSMutableArray *typeIdArr;
 //@property (nonatomic ,strong)  NSString *mobile;
 //@property (nonatomic ,strong)  NSString *;
 //加载公共设备资源
-- (void)loadPublicDeviceWithBuildingId:(NSInteger)buildingId;
+//- (void)loadPublicDeviceWithBuildingId:(NSInteger)buildingId;
 //加载私有设备资源
-- (void)loadPrivateDeviceWithMobile:(NSString *)mobile BuildingId:(NSInteger)building;
+//- (void)loadPrivateDeviceWithMobile:(NSString *)mobile BuildingId:(NSInteger)building;
+//加载所有可用设备
+- (void)loadAlleviceWithMobile:(NSString *)mobile BuildingId:(NSString *)buildingId;
 @end

@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "ResourceKeyModel.h"
 @interface ContentModel : NSObject
-@property (nonatomic ,strong) NSArray *resourceKeys;
-@property (nonatomic ,copy)  NSString *typeName;
+@property (nonatomic ,strong) NSArray *resourceDatas;
+@property (nonatomic ,copy)  NSString *name;
 @end
