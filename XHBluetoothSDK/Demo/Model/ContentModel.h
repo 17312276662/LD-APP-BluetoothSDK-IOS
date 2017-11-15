@@ -10,5 +10,4 @@
 #import "ResourceKeyModel.h"
 @interface ContentModel : NSObject
 @property (nonatomic ,strong) NSArray *resourceDatas;
-@property (nonatomic ,copy)  NSString *name;
 @end

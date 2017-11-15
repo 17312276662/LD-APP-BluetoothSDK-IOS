@@ -19,11 +19,10 @@
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *scanResult;
-@property (nonatomic ,strong)  NSArray *macStr;
+@property (nonatomic ,strong)  NSMutableArray *macStr;
 @property (nonatomic ,assign)  NSString *buildingId;
 @property (nonatomic ,strong)  NSString *token;
 @property (nonatomic ,strong)  NSString *deviceKey;
-@property (nonatomic ,assign)  NSMutableArray *manufacturerId;
 @property (nonatomic ,strong)  NSString *factory;
 @property (nonatomic ,strong)  NSString *mobile;
 @property (nonatomic ,strong)  UIAlertAction *device;
@@ -31,52 +30,56 @@
 @property (nonatomic ,strong)  NSMutableArray *macArr;
 @property (nonatomic ,strong)  NSMutableArray *passWordArr;
 @property (nonatomic ,strong)  NSMutableArray *manufacturerIdArr;
-@property (nonatomic ,strong)  NSMutableArray *typeName;
+@property (nonatomic ,strong)  NSMutableArray *typeNameArr;
+@property (nonatomic ,strong)  NSMutableArray *typeIdArr;
+@property (nonatomic ,strong)  NSMutableArray *buildingNameArr;
+@property (nonatomic ,strong)  CacheDate *date;
 @end
 
 @implementation ViewController
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
+    NSLog(@"3");
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"设备初始化中......" preferredStyle:UIAlertControllerStyleAlert];
     
     [self presentViewController:alertController animated:YES completion:nil];
     [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(dismissAlertView:) userInfo:alertController repeats:NO];
-
-}
-
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:YES];
-    self.buildingId = @"";
-    self.mobile = @"";
-    //self.mobile = @"13813486976";
-    //self.mobile = self.phoneTextField.text;
-    CacheDate *date = [CacheDate new];
-   // [date loadPublicDeviceWithBuildingId:self.buildingId];
-   // [date loadPrivateDeviceWithMobile:self.mobile BuildingId:self.buildingId];
-    [date loadAlleviceWithMobile:self.mobile BuildingId:self.buildingId];
-    
-    
 }
 
 - (void)loadDate{
-    
-    
-    CacheDate *date = [CacheDate new];
-    self.manufacturerIdArr = [NSMutableArray new];
-    self.passWordArr = [NSMutableArray new];
-    self.typeName = [NSMutableArray new];
-    self.macArr = [[NSMutableArray alloc] initWithArray:date.macArr];
+    _date = [CacheDate new];
+    self.buildingId = @"";
+    self.mobile = @"13813486976";
+//    self.mobile = @"";
+    [_date loadAlleviceWithMobile:self.mobile BuildingId:self.buildingId];
     
 }
 
 - (void)dismissAlertView:(NSTimer *)timer{
     UIAlertController *alertView = [timer userInfo];
     [alertView dismissViewControllerAnimated:YES completion:nil];
+    
+    
+    self.manufacturerIdArr = [NSMutableArray new];
+    self.passWordArr = [NSMutableArray new];
+    self.typeNameArr = [NSMutableArray new];
+    self.typeIdArr = [NSMutableArray new];
+    self.macArr = [NSMutableArray new];
+    self.buildingNameArr = [NSMutableArray new];
+    
+    self.manufacturerIdArr = [NSMutableArray arrayWithArray:_date.manufacturerIdArr];
+    self.passWordArr = [NSMutableArray arrayWithArray:_date.passWordArr];
+    self.typeNameArr = [NSMutableArray arrayWithArray:_date.typeNameArr];
+    self.typeIdArr = [NSMutableArray arrayWithArray:_date.typeIdArr];
+    self.macArr = [NSMutableArray arrayWithArray:_date.macArr];
+    self.buildingNameArr = [NSMutableArray arrayWithArray:_date.buildingNameArr];
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"1");
     [self loadDate];
     [self initDevice];
     [self.btnInit addTarget:self action:@selector(initDevice) forControlEvents:UIControlEventTouchUpInside];
@@ -88,6 +91,7 @@
     [self.secondFloorBtn addTarget:self action:@selector(chooseFloor2) forControlEvents:UIControlEventTouchUpInside];
     [self.thirdFloorBtn addTarget:self action:@selector(chooseFloor3) forControlEvents:UIControlEventTouchUpInside];
 }
+
 //初始化设备
 - (void)initDevice{
     self.scanResult.text = @"设备扫描结果";

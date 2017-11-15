@@ -13,8 +13,9 @@
 @property (nonatomic ,strong)  NSMutableArray *passWordArr;
 @property (nonatomic ,strong)  NSMutableArray *manufacturerIdArr;
 @property (nonatomic ,strong)  NSMutableArray *typeNameArr;
-@property (nonatomic ,strong)  NSMutableArray *nameArr;
+@property (nonatomic ,strong)  NSMutableArray *buildingNameArr;
 @property (nonatomic ,strong)  NSMutableArray *typeIdArr;
+@property (nonatomic ,strong)  NSMutableArray *deviceArr;
 //@property (nonatomic ,strong)  NSString *mobile;
 //@property (nonatomic ,strong)  NSString *;
 //加载公共设备资源

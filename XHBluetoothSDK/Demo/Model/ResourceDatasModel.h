@@ -11,5 +11,6 @@
 @interface ResourceDatasModel : NSObject
 @property (nonatomic ,copy)  NSString *typeName;
 @property (nonatomic ,copy)  NSArray *resourceKeys;
-@property (nonatomic ,copy)  NSString  *typeId;
+@property (nonatomic ,assign)  NSInteger  typeId;
+@property (nonatomic ,copy)  NSString *buildingName;
 @end
