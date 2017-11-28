@@ -11,7 +11,7 @@
 #import "XHCallElevatorDown.h"
 #import "XHChooseFloor.h"
 #import "contentModel.h"
-#import "CacheDate.h"
+#import "XHCacheDate.h"
 #define kDeviceKey                  @"4c464b47396764765737336f51317936"
 #define kDeviceNewKey               @"FFFFFFFFFFFFFFFF3232323232323232"
 #define kCardCode                   @"013612345678"
@@ -26,14 +26,19 @@
 @property (nonatomic ,strong)  NSString *factory;
 @property (nonatomic ,strong)  NSString *mobile;
 @property (nonatomic ,strong)  UIAlertAction *device;
-@property (nonatomic ,strong)  NSString *mac;
 @property (nonatomic ,strong)  NSMutableArray *macArr;
 @property (nonatomic ,strong)  NSMutableArray *passWordArr;
 @property (nonatomic ,strong)  NSMutableArray *manufacturerIdArr;
 @property (nonatomic ,strong)  NSMutableArray *typeNameArr;
 @property (nonatomic ,strong)  NSMutableArray *typeIdArr;
 @property (nonatomic ,strong)  NSMutableArray *buildingNameArr;
-@property (nonatomic ,strong)  CacheDate *date;
+@property (nonatomic ,strong)  XHCacheDate *date;
+@property (nonatomic ,strong)  NSString *buildingName;
+@property (nonatomic ,strong)  NSString *manufacturerId;
+@property (nonatomic ,strong)  NSString *passWord;
+@property (nonatomic ,strong)  NSString *typeId;
+@property (nonatomic ,strong)  NSString *typeName;
+@property (nonatomic ,strong)  NSString *mac;
 @end
 
 @implementation ViewController
@@ -48,7 +53,7 @@
 }
 
 - (void)loadDate{
-    _date = [CacheDate new];
+    _date = [XHCacheDate new];
     self.buildingId = @"";
     self.mobile = @"13813486976";
 //    self.mobile = @"";
@@ -79,6 +84,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.macStr = [NSMutableArray array];
     NSLog(@"1");
     [self loadDate];
     [self initDevice];
@@ -107,7 +113,25 @@
 - (IBAction)checkDevice:(id)sender {
     XHDeviceScan *scan = [XHDeviceScan new];
     [scan showDevice];
-    _macStr = scan.macStr;
+//    _macStr = scan.macStr;
+//    _macStr = @[@"3481F41B8219",@"32797175414b794842",@"3481F40D37FA"];
+    _macStr = [NSMutableArray arrayWithArray:scan.macStr];
+    NSString *cachePatch = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
+    NSString *filePath = [cachePatch stringByAppendingPathComponent:@"devices.plist"];
+    NSArray *devices = [NSArray arrayWithContentsOfFile:filePath];
+//    for (int i = 0; i < devices.count; i++) {
+//        NSDictionary *dict = [NSDictionary dictionaryWithDictionary:devices[i]];
+//        if ([_macStr[i] isEqual:dict[ ][@""]]) {
+//            _buildingName = dict[@"buildingName"];
+//            _manufacturerId = dict[@"manufacturerId"];
+//            _passWord = dict[@"passWord"];
+//            _typeId = dict[@"typeId"];
+//            _typeName = dict[@"typeName"];
+//            _mac = dict[@"mac"];
+//        }
+//    }
+    NSLog(@"%@", devices[0]);
+    
     UIAlertController *deviceActionSheet = [UIAlertController alertControllerWithTitle:@"选择需要开启的设备" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     for (int i = 0; i < _macStr.count; i ++) {
         NSString *mac = _macStr[i];
@@ -138,7 +162,7 @@
 - (void)openDoorWithMac:(NSString *)mac{
     XHOpenDoor *openDoor = [XHOpenDoor new];
     NSString *deviceKey = kDeviceKey;
-   // NSString *macStr = _macStr;
+    // NSString *macStr = _macStr;
     NSString *time = @"60";
     NSString *factory = @"LFDoor";
     [openDoor openDoorCheckedWithMac:_mac deviceKey:deviceKey outputActiveTime:time factory:factory];
@@ -200,5 +224,4 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 @end

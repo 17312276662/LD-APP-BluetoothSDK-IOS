@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-
+#import <terminus/TerminusApi.h>
+#import "OpenUDID.h"
 @interface AppDelegate ()
 
 @end
@@ -16,7 +17,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+   [TerminusBleCommunicationManager registerTslSamrt:@"55fe0451d0a24381929e226f5b48a965" appId:@"4a24d18509a841ca8ef50bd9e0f5f4a7"];
     return YES;
 }
 
@@ -28,8 +29,7 @@
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [[TerminusBleCommunicationManager shareManagerInstance] CloseBleConnect];
 }
 
 

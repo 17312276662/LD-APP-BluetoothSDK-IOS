@@ -9,16 +9,31 @@
 #import "XHDeviceScan.h"
 @implementation XHDeviceScan
 - (void)initSDK{
-    Class class = NSClassFromString([NSString stringWithFormat:@"%@DeviceScan",@"AAAA"]);
+    Class class = NSClassFromString(@"LFDeviceScan");
     NSObject *scan = [[class alloc] init];
     SEL selector = NSSelectorFromString(@"initSDK");
     [scan performSelector:selector];
 }
 
 - (void)showDevice{
-    Class class = NSClassFromString(@"DeviceScan");
+    _macStr = [NSMutableArray array];
+    [self showLFDevice];
+    [self showTSLDevice];
+}
+
+- (void)showLFDevice{
+    Class class = NSClassFromString(@"LFDeviceScan");
     NSObject *scan = [[class alloc] init];
     SEL selector = NSSelectorFromString(@"showDevice");
-    _macStr = [scan performSelector:selector];
+    NSArray *arr = [scan performSelector:selector];
+    [_macStr addObjectsFromArray:arr];
+}
+
+- (void)showTSLDevice{
+    Class class = NSClassFromString(@"TSLDeviceScan");
+    NSObject *scan = [[class alloc] init];
+    SEL selector = NSSelectorFromString(@"showDevice");
+    NSArray *arr = [scan performSelector:selector];
+    [_macStr addObjectsFromArray:arr];
 }
 @end

@@ -89,7 +89,7 @@ typedef NS_ENUM(uint8_t, HallBtnDir)
 @property (nonatomic, weak) id <RfmSessionDelegate> delegate;
 
 ///底层状态
-@property (nonatomic, readonly, assign) CBManagerState cbState;
+@property (nonatomic, readonly, assign) CBCentralManagerState cbState;
 
 /**
  * @brief                   初始化SDK

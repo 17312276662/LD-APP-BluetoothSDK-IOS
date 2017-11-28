@@ -766,17 +766,8 @@ static RfmDeviceManager *sharedManager = nil;
         return;
     //
     NSData *data = advertisementData[@"kCBAdvDataManufacturerData"];
-    NSInteger len = data.length - 2;
-    NSData *tmpData;
-    if (len >= 9)
-    {
-        tmpData = [data subdataWithRange:NSMakeRange(2, len)];  //厂商自定义mac
-    }
-    else
-    {
-        YYLog(@"提示:当前设备不是立方设备 %@ 的mac长度不对!",peripheral.name);
-        return;
-    }
+    NSUInteger len = data.length - 2;
+    NSData *tmpData = [data subdataWithRange:NSMakeRange(2, len)];  //厂商自定义mac
     //
     RfmDevice *dev = [self retreveDevice:peripheral];   //在已发现的设备列表里检索
     if (dev == nil)     //新外设

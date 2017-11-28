@@ -14,7 +14,7 @@
 #import "RfmSimpleDevice.h"
 #import "RfmDeviceManager.h"
 //
-#import "DesDLL.h"
+#import "desDLL.h"
 
 #import <CoreBluetooth/CoreBluetooth.h>
 //
@@ -86,7 +86,7 @@ static RfmSession *sharedManager = nil;
     return self;
 }
 
-- (CBManagerState)cbState
+- (CBCentralManagerState)cbState
 {
     return [RfmDeviceManager sharedManager].centralManager.state;
 }
@@ -204,8 +204,8 @@ static RfmSession *sharedManager = nil;
             return RfmActionErrorBusy;
         }
         //检查蓝牙底层状态
-        CBManagerState cbState = [RfmDeviceManager sharedManager].centralManager.state;
-        if (cbState == CBManagerStatePoweredOn)
+        CBCentralManagerState cbState = [RfmDeviceManager sharedManager].centralManager.state;
+        if (cbState == CBCentralManagerStatePoweredOn)
         {
             _state = RfmSessionStateBusy;
             _statistTotal ++;
@@ -224,15 +224,15 @@ static RfmSession *sharedManager = nil;
                 return RfmActionErrorNoDevice;   //指定的设备已经消失
             }
         }
-        else if (cbState == CBManagerStateUnsupported)
+        else if (cbState == CBCentralManagerStateUnsupported)
         {
             return RfmActionErrorUnsupported;
         }
-        else if (cbState == CBManagerStateUnauthorized)
+        else if (cbState == CBCentralManagerStateUnauthorized)
         {
             return RfmActionErrorUnauthorized;
         }
-        else if (cbState == CBManagerStatePoweredOff)
+        else if (cbState == CBCentralManagerStatePoweredOff)
         {
             return RfmActionErrorPoweredOff;
         }
@@ -258,8 +258,8 @@ static RfmSession *sharedManager = nil;
         return RfmActionErrorBusy;
     }
     //检查蓝牙底层状态
-    CBManagerState cbState = [RfmDeviceManager sharedManager].centralManager.state;
-    if (cbState == CBManagerStatePoweredOn)
+    CBCentralManagerState cbState = [RfmDeviceManager sharedManager].centralManager.state;
+    if (cbState == CBCentralManagerStatePoweredOn)
     {
         _state = RfmSessionStateBusy;
         _statistTotal ++;
@@ -277,15 +277,15 @@ static RfmSession *sharedManager = nil;
             return RfmActionErrorNoDevice;   //指定的设备已经消失
         }
     }
-    else if (cbState == CBManagerStateUnsupported)
+    else if (cbState == CBCentralManagerStateUnsupported)
     {
         return RfmActionErrorUnsupported;
     }
-    else if(cbState == CBManagerStateUnauthorized)
+    else if(cbState == CBCentralManagerStateUnauthorized)
     {
         return RfmActionErrorUnauthorized;
     }
-    else if(cbState == CBManagerStatePoweredOff)
+    else if(cbState == CBCentralManagerStatePoweredOff)
     {
         return RfmActionErrorPoweredOff;
     }
@@ -309,7 +309,7 @@ static RfmSession *sharedManager = nil;
     }
     //检查蓝牙底层状态
     CBManagerState cbState = [RfmDeviceManager sharedManager].centralManager.state;
-    if (cbState == CBManagerStatePoweredOn)
+    if (cbState == CBCentralManagerStatePoweredOn)
     {
         _state = RfmSessionStateBusy;
         _statistTotal ++;
@@ -331,15 +331,15 @@ static RfmSession *sharedManager = nil;
             return RfmActionErrorNoDevice;   //指定的设备已经消失
         }
     }
-    else if (cbState == CBManagerStateUnsupported)
+    else if (cbState == CBCentralManagerStateUnsupported)
     {
         return RfmActionErrorUnsupported;
     }
-    else if (cbState == CBManagerStateUnauthorized)
+    else if (cbState == CBCentralManagerStateUnauthorized)
     {
         return RfmActionErrorUnauthorized;
     }
-    else if (cbState == CBManagerStatePoweredOff)
+    else if (cbState == CBCentralManagerStatePoweredOff)
     {
         return RfmActionErrorPoweredOff;
     }
@@ -363,7 +363,7 @@ static RfmSession *sharedManager = nil;
     }
     //检查蓝牙底层状态
     CBManagerState cbState = [RfmDeviceManager sharedManager].centralManager.state;
-    if (cbState == CBManagerStatePoweredOn)
+    if (cbState == CBCentralManagerStatePoweredOn)
     {
         _state = RfmSessionStateBusy;
         _statistTotal ++;
@@ -385,15 +385,15 @@ static RfmSession *sharedManager = nil;
             return RfmActionErrorNoDevice;   //指定的设备已经消失
         }
     }
-    else if (cbState == CBManagerStateUnsupported)
+    else if (cbState == CBCentralManagerStateUnsupported)
     {
         return RfmActionErrorUnsupported;
     }
-    else if (cbState == CBManagerStateUnauthorized)
+    else if (cbState == CBCentralManagerStateUnauthorized)
     {
         return RfmActionErrorUnauthorized;
     }
-    else if (cbState == CBManagerStatePoweredOff)
+    else if (cbState == CBCentralManagerStatePoweredOff)
     {
         return RfmActionErrorPoweredOff;
     }
@@ -410,16 +410,12 @@ static RfmSession *sharedManager = nil;
 {
     //获取设备的mac
     NSData *data = advertisementData[@"kCBAdvDataManufacturerData"];
-    if (data.length >= 11)
-    {
-        Byte tmp[2];
-        //获取设备的mac的前两个字节
-        [data getBytes:tmp range:NSMakeRange(0, 2)];
-        if (tmp[0] == 0x88 && tmp[1] == 0x88)
-        {
-            return YES;
-        }
-    }   
+    //获取设备的mac的前两个字节
+    Byte tmp[2];
+    [data getBytes:tmp range:NSMakeRange(0, 2)];
+    if (tmp[0] == 0x88 && tmp[1] == 0x88) {
+        return YES;
+    }
     return NO;
 }
 

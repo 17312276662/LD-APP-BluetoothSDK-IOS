@@ -7,7 +7,6 @@
 //
 
 #import "XHCallElevatorUp.h"
-
 @implementation XHCallElevatorUp
 -(void)callElevatorUpWithMac:(NSString *)mac andDeviceKey:(NSString *)deviceKey andCode:(NSString *)code andDir:(NSString *)dir{
     if (mac) {
