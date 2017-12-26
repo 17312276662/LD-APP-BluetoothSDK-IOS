@@ -24,5 +24,23 @@
 //初始化SDK
 - (void)initSDK;
 //扫描设备
-- (NSArray *)showDevice;
+- (NSMutableArray *)showDevice;
 @end
+
+/*
+ self.deviceArr = [NSMutableArray array];
+ self.deviceArr = [NSMutableArray arrayWithArray:[[RfmSession sharedManager] discoveredDevices]];
+ //    NSMutableArray *devices = [[RfmSession sharedManager] discoveredDevices];
+ // NSString *string = [[NSString alloc] initWithFormat:@"当前附近有 %d 个门禁", (int)_devices.count];
+ 
+ for (RfmSimpleDevice *device in _deviceArr)
+ {
+ _macStr = [device.mac dataToHexString];
+ NSLog(@"mac:%@ rssi:%d", _macStr, (int)device.rssi);
+ _deviceArr = [NSMutableArray arrayWithObject:_macStr];
+ }
+ //return _deviceArr;
+ NSArray *arr = @[@"8CDE52111123",@"12524585445514",@"327A6A6E6F504E4231"];
+ return arr;
+ 
+ */

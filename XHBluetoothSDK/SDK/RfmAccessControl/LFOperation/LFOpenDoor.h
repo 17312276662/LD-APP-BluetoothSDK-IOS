@@ -16,7 +16,7 @@
 #define kShowTimeLong               2
 #define kShowTime                   2
 @interface LFOpenDoor : NSObject <RfmSessionDelegate>
-@property (nonatomic, strong)  NSArray *devices;
+@property (nonatomic, strong)  NSMutableArray *devices;
 @property (nonatomic ,strong)  NSString *deviceKey;
 @property (nonatomic ,strong)  NSString *mac;
 @property (nonatomic,strong)   NSString *time;

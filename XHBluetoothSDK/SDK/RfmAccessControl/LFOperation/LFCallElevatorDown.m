@@ -7,13 +7,9 @@
 //
 
 #import "LFCallElevatorDown.h"
-#import "LFBasicStateCheck.h"
 
 @implementation LFCallElevatorDown
 - (void)callElevatorDown{
-    LFBasicStateCheck *basicStateCheck = [LFBasicStateCheck new];
-    if ([basicStateCheck basicStateCheck])
-    {
         _devices = [[RfmSession sharedManager] discoveredDevices];
         RfmActionError error = [[RfmSession sharedManager] openHallBtn:[_mac stringToHexData] deviceKey:_deviceKey code:_code dir:_dir];
         if (error == RfmActionErrorNone)
@@ -26,12 +22,6 @@
             [self showMessage:@"操作失败" time:kShowTimeLong];
         }
     }
-    else
-    {
-        [self showMessage:@"未搜索到蓝牙控制器" time:kShowTimeLong];
-    }
-    
-}
 
 #pragma mark - 简单提示信息
 - (void)showMessage:(NSString *)message time:(NSTimeInterval)time

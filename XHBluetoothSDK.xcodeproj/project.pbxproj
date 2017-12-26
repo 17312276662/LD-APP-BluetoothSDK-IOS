@@ -33,8 +33,9 @@
 		A55491BD1FC66A9200461B38 /* TSLOpenDoor.m in Sources */ = {isa = PBXBuildFile; fileRef = A55491BC1FC66A9200461B38 /* TSLOpenDoor.m */; };
 		A55491C01FC6C9B700461B38 /* TSLDeviceScan.m in Sources */ = {isa = PBXBuildFile; fileRef = A55491BF1FC6C9B700461B38 /* TSLDeviceScan.m */; };
 		A55491C41FC7FE5400461B38 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = A55491C31FC7FE5400461B38 /* OpenUDID.m */; };
+		A55538FD1FCE66AC00637750 /* BlueModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A55538FC1FCE66AC00637750 /* BlueModel.m */; };
 		A57CD1B91FB5ABB700B115A4 /* ResourceDatasModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A57CD1B81FB5ABB700B115A4 /* ResourceDatasModel.m */; };
-		A5AA0E411F907DB80098548F /* LFBasicStateCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = A5AA0E401F907DB80098548F /* LFBasicStateCheck.m */; };
+		A582B2301FDA981A000545B4 /* DeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A582B22F1FDA981A000545B4 /* DeviceModel.m */; };
 		A5AA0E471F90ADC70098548F /* XHCallElevatorUp.m in Sources */ = {isa = PBXBuildFile; fileRef = A5AA0E461F90ADC70098548F /* XHCallElevatorUp.m */; };
 		A5AA0E4A1F90ADE30098548F /* XHCallElevatorDown.m in Sources */ = {isa = PBXBuildFile; fileRef = A5AA0E491F90ADE30098548F /* XHCallElevatorDown.m */; };
 		A5AA0E531F90AFA70098548F /* LFCallElevatorUp.m in Sources */ = {isa = PBXBuildFile; fileRef = A5AA0E521F90AFA70098548F /* LFCallElevatorUp.m */; };
@@ -133,10 +134,12 @@
 		A55491BF1FC6C9B700461B38 /* TSLDeviceScan.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSLDeviceScan.m; sourceTree = "<group>"; };
 		A55491C21FC7FE5400461B38 /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
 		A55491C31FC7FE5400461B38 /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
+		A55538FB1FCE66AC00637750 /* BlueModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlueModel.h; sourceTree = "<group>"; };
+		A55538FC1FCE66AC00637750 /* BlueModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlueModel.m; sourceTree = "<group>"; };
 		A57CD1B71FB5ABB700B115A4 /* ResourceDatasModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResourceDatasModel.h; sourceTree = "<group>"; };
 		A57CD1B81FB5ABB700B115A4 /* ResourceDatasModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResourceDatasModel.m; sourceTree = "<group>"; };
-		A5AA0E3F1F907DB80098548F /* LFBasicStateCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFBasicStateCheck.h; sourceTree = "<group>"; };
-		A5AA0E401F907DB80098548F /* LFBasicStateCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFBasicStateCheck.m; sourceTree = "<group>"; };
+		A582B22E1FDA981A000545B4 /* DeviceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceModel.h; sourceTree = "<group>"; };
+		A582B22F1FDA981A000545B4 /* DeviceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceModel.m; sourceTree = "<group>"; };
 		A5AA0E451F90ADC70098548F /* XHCallElevatorUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHCallElevatorUp.h; sourceTree = "<group>"; };
 		A5AA0E461F90ADC70098548F /* XHCallElevatorUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHCallElevatorUp.m; sourceTree = "<group>"; };
 		A5AA0E481F90ADE30098548F /* XHCallElevatorDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHCallElevatorDown.h; sourceTree = "<group>"; };
@@ -335,6 +338,8 @@
 				A55491BF1FC6C9B700461B38 /* TSLDeviceScan.m */,
 				A55491BB1FC66A9200461B38 /* TSLOpenDoor.h */,
 				A55491BC1FC66A9200461B38 /* TSLOpenDoor.m */,
+				A55538FB1FCE66AC00637750 /* BlueModel.h */,
+				A55538FC1FCE66AC00637750 /* BlueModel.m */,
 			);
 			path = TSLOperation;
 			sourceTree = "<group>";
@@ -523,6 +528,8 @@
 				A5AA0E581F90BDD60098548F /* XHChooseFloor.m */,
 				A52F189F1FBC849D00DDBB5D /* XHGetManufacturerName.h */,
 				A52F18A01FBC849D00DDBB5D /* XHGetManufacturerName.m */,
+				A582B22E1FDA981A000545B4 /* DeviceModel.h */,
+				A582B22F1FDA981A000545B4 /* DeviceModel.m */,
 			);
 			path = XHSDK;
 			sourceTree = "<group>";
@@ -549,8 +556,6 @@
 		A5F684631F8E06B800165368 /* LFOperation */ = {
 			isa = PBXGroup;
 			children = (
-				A5AA0E3F1F907DB80098548F /* LFBasicStateCheck.h */,
-				A5AA0E401F907DB80098548F /* LFBasicStateCheck.m */,
 				A5F684641F8E09AC00165368 /* LFDeviceScan.h */,
 				A5F684651F8E09AC00165368 /* LFDeviceScan.m */,
 				A5F684661F8E09AC00165368 /* LFOpenDoor.h */,
@@ -735,6 +740,7 @@
 				A521BC5D1FCBBAC3007B0E41 /* RfmDevice.m in Sources */,
 				A5E550661F920D12005A3602 /* MJFoundation.m in Sources */,
 				A55491BD1FC66A9200461B38 /* TSLOpenDoor.m in Sources */,
+				A55538FD1FCE66AC00637750 /* BlueModel.m in Sources */,
 				A5E550401F92088B005A3602 /* AFURLSessionManager.m in Sources */,
 				A5E550431F92088B005A3602 /* AFSecurityPolicy.m in Sources */,
 				A55491C41FC7FE5400461B38 /* OpenUDID.m in Sources */,
@@ -746,6 +752,7 @@
 				A521BC5C1FCBBAC3007B0E41 /* DesDLL.c in Sources */,
 				A5E550421F92088B005A3602 /* AFNetworkReachabilityManager.m in Sources */,
 				A5E5503F1F92088B005A3602 /* AFHTTPSessionManager.m in Sources */,
+				A582B2301FDA981A000545B4 /* DeviceModel.m in Sources */,
 				A5E5507E1F9340A8005A3602 /* ResourceKeyModel.m in Sources */,
 				A5E550711F933D7C005A3602 /* XHCacheDate.m in Sources */,
 				A5E5506E1F92598A005A3602 /* JWHttpTool.m in Sources */,
@@ -762,7 +769,6 @@
 				A5AA0E531F90AFA70098548F /* LFCallElevatorUp.m in Sources */,
 				A5E550651F920D12005A3602 /* MJPropertyKey.m in Sources */,
 				A5E5505E1F920D12005A3602 /* NSObject+MJKeyValue.m in Sources */,
-				A5AA0E411F907DB80098548F /* LFBasicStateCheck.m in Sources */,
 				A5F684691F8E09AC00165368 /* LFOpenDoor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

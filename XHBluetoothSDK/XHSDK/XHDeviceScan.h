@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface XHDeviceScan : NSObject
-@property (nonatomic ,strong)  NSMutableArray *macStr;
+@property (nonatomic ,strong)  NSMutableArray *macArr;
 //初始化SDK
 - (void)initSDK;
 //扫描设备

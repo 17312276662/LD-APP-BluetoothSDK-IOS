@@ -8,74 +8,137 @@
 
 #import "LFOpenDoor.h"
 #import <CoreBluetooth/CoreBluetooth.h>
-#import "LFBasicStateCheck.h"
+#import "LFDeviceScan.h"
 @implementation LFOpenDoor
+
+- (NSMutableArray *)devices;
+{
+    if (!_devices) {
+        _devices =  [NSMutableArray array];
+    }
+    return _devices;
+}
+
 //开门
 - (void)openDoor{
-    LFBasicStateCheck *basicStateCheck = [LFBasicStateCheck new];
-    if ([basicStateCheck basicStateCheck])
-    {
-        _devices = [[RfmSession sharedManager] discoveredDevices];
-        [RfmSession sharedManager].delegate = self;
-        if (_devices.count > 0)
+    LFDeviceScan *deviceScan = [LFDeviceScan new];
+    _devices = [deviceScan showDevice];
+    [RfmSession sharedManager].delegate = self;
+    if (_devices.count > 0)
         {
-            
-           // for (RfmSimpleDevice *device in _devices)
-           // {
-                u_int16_t Time = (u_int16_t)time;
-                RfmActionError error = [[RfmSession sharedManager]openDoorCheckedWithMac:[_mac stringToHexData] deviceKey:_deviceKey outputActiveTime:Time isRfmDevice:YES];
-                
-                if (error == RfmActionErrorNone)
-                {
-                    [self showMessage:@"认证中..." time:kShowTimeLong];
-                }
-                else if (error == RfmActionErrorParam)
-                {
-                    [self showMessage:@"输入参数有误" time:kShowTimeLong];
-                }
-                else if (error == RfmActionErrorNoDevice)
-                {
-                    [self showMessage:@"指定设备不再范围内" time:kShowTimeLong];
-                }
-                else if (error == RfmActionErrorPoweredOff)
-                {
-                    [self showMessage:@"蓝牙开关未开启" time:kShowTimeLong];
-                }
-                /*
-                 else if (error == RfmActionErrorUnsupported)    //当前版本不会进入此处
-                 {
-                 [self showMessage:@"手机不支持" time:kShowTimeLong];
-                 }
-                 */
-                else if (error == RfmActionErrorUnauthorized)
-                {
-                    [self showMessage:@"用户未授权" time:kShowTimeLong];
-                }
-                else if (error == RfmActionErrorBusy)
-                {
-                    [self showMessage:@"操作忙" time:kShowTimeLong];
-                }
-                else if (error == RfmActionErrorOther)
-                {
-                    [self showMessage:@"其他异常" time:kShowTimeLong];
-                }
-                
-                // [actionSheet addButtonWithTitle:[device.mac dataToHexString]];
-                /*
-                _devices = [NSArray arrayWithObject:device.mac];
-                
-                NSLog(@" device.mac --> %@",device.mac);
-                
-                NSLog(@" stringToHexData --> %@",[[device.mac dataToHexString] stringToHexData]);
-                 */
-            }
+        u_int16_t Time = (u_int16_t)time;
+        RfmActionError error = [[RfmSession sharedManager]openDoorCheckedWithMac:[_mac stringToHexData] deviceKey:_deviceKey outputActiveTime:Time isRfmDevice:YES];
+    
+        if (error == RfmActionErrorNone)
+        {
+            [self showMessage:@"认证中..." time:kShowTimeLong];
         }
-        else
+        else if (error == RfmActionErrorParam)
         {
-            [self showMessage:@"未搜索到蓝牙控制器" time:kShowTimeLong];
+            [self showMessage:@"输入参数有误" time:kShowTimeLong];
+        }
+        else if (error == RfmActionErrorNoDevice)
+        {
+            [self showMessage:@"指定设备不再范围内" time:kShowTimeLong];
+        }
+        else if (error == RfmActionErrorPoweredOff)
+        {
+        [self showMessage:@"蓝牙开关未开启" time:kShowTimeLong];
+        }
+                    /*
+                     else if (error == RfmActionErrorUnsupported)    //当前版本不会进入此处
+                     {
+                     [self showMessage:@"手机不支持" time:kShowTimeLong];
+                     }
+                     */
+        else if (error == RfmActionErrorUnauthorized)
+        {
+            [self showMessage:@"用户未授权" time:kShowTimeLong];
+        }
+        else if (error == RfmActionErrorBusy)
+        {
+            [self showMessage:@"操作忙" time:kShowTimeLong];
+        }
+        else if (error == RfmActionErrorOther)
+        {
+            [self showMessage:@"其他异常" time:kShowTimeLong];
         }
     
-}
+                    // [actionSheet addButtonWithTitle:[device.mac dataToHexString]];
+                    /*
+                    _devices = [NSArray arrayWithObject:device.mac];
+    
+                    NSLog(@" device.mac --> %@",device.mac);
+    
+                    NSLog(@" stringToHexData --> %@",[[device.mac dataToHexString] stringToHexData]);
+                     */
+        }
+    }
+    
+//    LFBasicStateCheck *basicStateCheck = [LFBasicStateCheck new];
+//    if ([basicStateCheck basicStateCheck])
+//    {
+//        _devices = [[RfmSession sharedManager] discoveredDevices];
+//        [RfmSession sharedManager].delegate = self;
+//        if (_devices.count > 0)
+//        {
+//
+//           // for (RfmSimpleDevice *device in _devices)
+//           // {
+//                u_int16_t Time = (u_int16_t)time;
+//                RfmActionError error = [[RfmSession sharedManager]openDoorCheckedWithMac:[_mac stringToHexData] deviceKey:_deviceKey outputActiveTime:Time isRfmDevice:YES];
+//
+//                if (error == RfmActionErrorNone)
+//                {
+//                    [self showMessage:@"认证中..." time:kShowTimeLong];
+//                }
+//                else if (error == RfmActionErrorParam)
+//                {
+//                    [self showMessage:@"输入参数有误" time:kShowTimeLong];
+//                }
+//                else if (error == RfmActionErrorNoDevice)
+//                {
+//                    [self showMessage:@"指定设备不再范围内" time:kShowTimeLong];
+//                }
+//                else if (error == RfmActionErrorPoweredOff)
+//                {
+//                    [self showMessage:@"蓝牙开关未开启" time:kShowTimeLong];
+//                }
+//                /*
+//                 else if (error == RfmActionErrorUnsupported)    //当前版本不会进入此处
+//                 {
+//                 [self showMessage:@"手机不支持" time:kShowTimeLong];
+//                 }
+//                 */
+//                else if (error == RfmActionErrorUnauthorized)
+//                {
+//                    [self showMessage:@"用户未授权" time:kShowTimeLong];
+//                }
+//                else if (error == RfmActionErrorBusy)
+//                {
+//                    [self showMessage:@"操作忙" time:kShowTimeLong];
+//                }
+//                else if (error == RfmActionErrorOther)
+//                {
+//                    [self showMessage:@"其他异常" time:kShowTimeLong];
+//                }
+//
+//                // [actionSheet addButtonWithTitle:[device.mac dataToHexString]];
+//                /*
+//                _devices = [NSArray arrayWithObject:device.mac];
+//
+//                NSLog(@" device.mac --> %@",device.mac);
+//
+//                NSLog(@" stringToHexData --> %@",[[device.mac dataToHexString] stringToHexData]);
+//                 */
+//            }
+//        }
+//        else
+//        {
+//            [self showMessage:@"未搜索到蓝牙控制器" time:kShowTimeLong];
+//        }
+//
+
 
 #pragma mark - 简单提示信息
 - (void)showMessage:(NSString *)message time:(NSTimeInterval)time

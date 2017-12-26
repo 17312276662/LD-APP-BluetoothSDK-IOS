@@ -18,7 +18,6 @@
 @implementation XHCacheDate
 
 - (void)loadAlleviceWithMobile:(NSString *)mobile BuildingId:(NSString *)buildingId{
-    NSLog(@"-----2");
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     NSString *key =@"123qweASDzxc";
     NSString *str = [NSString stringWithFormat:@"mobile=%@&%@",mobile,key];
@@ -56,9 +55,8 @@
                 }
             }
         }
-         self.deviceArr = [NSMutableArray new];
+        self.deviceArr = [NSMutableArray new];
         for (int i = 0; i < self.macArr.count; i ++) {
-            NSString *keys = [NSString stringWithFormat:@"device%d",i];
             NSDictionary *dict  = @{@"mac" : self.macArr[i],
                                     @"typeName" : self.typeNameArr[i],
                                     @"typeId" : self.typeIdArr[i],
@@ -66,14 +64,14 @@
                                     @"manufacturerId" : self.manufacturerIdArr[i],
                                     @"buildingName" : self.buildingNameArr[i]
                                     };
-            NSMutableDictionary *deviceDict = [NSMutableDictionary dictionaryWithObject:dict forKey:keys];
-            [self.deviceArr addObject:deviceDict];
+
+            [self.deviceArr addObject:dict];
         }
         NSString *cachePatch = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
         NSString *filePath = [cachePatch stringByAppendingPathComponent:@"devices.plist"];
         NSURL *fileUrl = [NSURL fileURLWithPath:filePath];
         [self.deviceArr writeToURL:fileUrl atomically:YES];
-        NSLog(@"%@",cachePatch);
+        NSLog(@"******%@",cachePatch);
     } failure:^(NSError *error) {
         NSLog(@"稍后再试");
     }];

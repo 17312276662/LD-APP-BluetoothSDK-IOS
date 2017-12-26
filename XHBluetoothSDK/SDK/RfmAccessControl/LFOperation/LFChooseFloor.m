@@ -7,11 +7,9 @@
 //
 
 #import "LFChooseFloor.h"
-#import "LFBasicStateCheck.h"
 @implementation LFChooseFloor
 - (void)chooseFloor{
-    LFBasicStateCheck *basicStateCheck = [LFBasicStateCheck new];
-    if ([basicStateCheck basicStateCheck]){
+//    LFBasicStateCheck *basicStateCheck = [LFBasicStateCheck new];
         NSInteger floor = (NSUInteger)(self.floor);
             RfmActionError error = [[RfmSession sharedManager] openElevator:[_mac stringToHexData] deviceKey:_deviceKey code:_code floor:floor];
             if (error == RfmActionErrorNone)
@@ -24,11 +22,8 @@
                 [self showMessage:@"操作失败" time:kShowTimeLong];
             }
             
-        }else
-        {
-            [self showMessage:@"未搜索到蓝牙控制器" time:kShowTimeLong];
         }
-}
+
 
 #pragma mark - 简单提示信息
 - (void)showMessage:(NSString *)message time:(NSTimeInterval)time

@@ -8,21 +8,12 @@
 
 #import "TSLDeviceScan.h"
 #import <Terminus/TerminusApi.h>
+#import "BlueModel.h"
 @class TSLDeviceScan;
 @interface TSLDeviceScan () <TerminusBleDelegate>;
 @property (nonatomic,strong) NSMutableArray *deviceArr;
 @property (nonatomic,weak) TerminusBleCommunicationManager *blueManger;
 @end
-
-@interface blueModel : NSObject
-@property (nonatomic,copy) NSString * name;
-@property (nonatomic) NSNumber * rssi;
-@end
-
-@implementation blueModel
-
-@end
-
 @implementation TSLDeviceScan
 
 - (NSMutableArray *)showDevice{
@@ -30,8 +21,10 @@
     [[TerminusBleCommunicationManager shareManagerInstance] ClearBleConnectCache];
     self.deviceArr = [NSMutableArray array];
     self.blueManger = [TerminusBleCommunicationManager shareManagerInstance];
-    [self.blueManger startScanDevice:nil];
     self.blueManger.TBLEDelegate = self;
+    [self.blueManger startScanDevice:nil];
+    NSArray *arr = @[@"64951695432649565",@"3481F40D4BD4"];
+    self.deviceArr = [NSMutableArray arrayWithArray:arr];
     return _deviceArr;
 }
 
@@ -41,13 +34,13 @@
     if (!deviceLocalName) {
         deviceLocalName = peripheral.name;
     }
-    for (blueModel * model in self.deviceArr) {
+    for (BlueModel *model in self.deviceArr) {
         if ([model.name isEqualToString:deviceLocalName]){
             model.rssi = RSSI;
             return;
         }
     }
-    blueModel * newModel = [blueModel new];
+    BlueModel * newModel = [BlueModel new];
     newModel.name = deviceLocalName;
     newModel.rssi = RSSI;
     [self.deviceArr addObject:newModel];

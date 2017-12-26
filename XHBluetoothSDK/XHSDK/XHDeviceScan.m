@@ -16,7 +16,7 @@
 }
 
 - (void)showDevice{
-    _macStr = [NSMutableArray array];
+    _macArr = [NSMutableArray array];
     [self showLFDevice];
     [self showTSLDevice];
 }
@@ -26,7 +26,7 @@
     NSObject *scan = [[class alloc] init];
     SEL selector = NSSelectorFromString(@"showDevice");
     NSArray *arr = [scan performSelector:selector];
-    [_macStr addObjectsFromArray:arr];
+    [_macArr addObjectsFromArray:arr];
 }
 
 - (void)showTSLDevice{
@@ -34,6 +34,6 @@
     NSObject *scan = [[class alloc] init];
     SEL selector = NSSelectorFromString(@"showDevice");
     NSArray *arr = [scan performSelector:selector];
-    [_macStr addObjectsFromArray:arr];
+    [_macArr addObjectsFromArray:arr];
 }
 @end

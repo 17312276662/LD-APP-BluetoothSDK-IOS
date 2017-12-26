@@ -83,19 +83,21 @@
     [self setUpSDK1];
 }
 
-- (NSArray *)showDevice{
+- (NSMutableArray *)showDevice{
     NSArray *devices = [[RfmSession sharedManager] discoveredDevices];
+    self.deviceArr = [NSMutableArray arrayWithArray:devices];
    // NSString *string = [[NSString alloc] initWithFormat:@"当前附近有 %d 个门禁", (int)_devices.count];
     
-    for (RfmSimpleDevice *device in devices)
+    for (RfmSimpleDevice *device in self.deviceArr)
     {
         _macStr = [device.mac dataToHexString];
         NSLog(@"mac:%@ rssi:%d", _macStr, (int)device.rssi);
         _deviceArr = [NSMutableArray arrayWithObject:_macStr];
     }
     //return _deviceArr;
-    NSArray *arr = @[@"32357158536d373773",@"1234567890",@"5464746545474746"];
-    return arr;
+    NSArray *arr = @[@"8CDE52111123",@"12524585445514",@"327A6A6E6F504E4231"];
+    self.deviceArr = [NSMutableArray arrayWithArray:arr];
+    return _deviceArr;
 }
 
 #pragma mark - CBCentralManagerDelegate

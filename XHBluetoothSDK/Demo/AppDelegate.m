@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import <terminus/TerminusApi.h>
+#import <Terminus/TerminusApi.h>
 #import "OpenUDID.h"
 @interface AppDelegate ()
 

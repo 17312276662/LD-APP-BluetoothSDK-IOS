@@ -11,9 +11,10 @@
 //传入mac开门
 -(void)openDoorCheckedWithMac:(NSString *)mac deviceKey:(NSString *)deviceKey outputActiveTime:(NSString *)time factory:(NSString *)factoryStr{
     //开门字典
+    
     if (mac) {
     NSDictionary *openDict = @{                               // 类名
-                               @"className" : @"OpenDoor",
+                               @"className" : @"LFOpenDoor",
                                // 数据参数
                                @"propertys" : @{@"mac": mac,
                                                   
@@ -26,7 +27,7 @@
                                // 调用方法名
                                @"method" : @"openDoor"};
     
-    Class class = NSClassFromString(@"OpenDoor");
+    Class class = NSClassFromString(@"LFOpenDoor");
     NSObject *openDoor = [[class alloc] init];
     // 获取参数列表，使用枚举的方式，对控制器属性进行KVC赋值
     NSDictionary *parameter = openDict[@"propertys"];
