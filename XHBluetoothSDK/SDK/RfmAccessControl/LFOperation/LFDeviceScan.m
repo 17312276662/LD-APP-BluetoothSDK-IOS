@@ -38,7 +38,7 @@
 
 //检查状态
 - (BOOL)basicStateCheck{
-    CBManagerState state = [RfmSession sharedManager].cbState;
+    CBManagerState state = *(CBManagerState *)[RfmSession sharedManager].cbState;
     BOOL stateOK = NO;
     //
     if (state == CBManagerStatePoweredOff)

@@ -14,6 +14,8 @@
 #import "XHCacheDate.h"
 #import "DeviceModel.h"
 #import "MJExtension.h"
+#import "DeviceViewController.h"
+
 #define kDeviceKey                  @"4c464b47396764765737336f51317936"
 #define kDeviceNewKey               @"FFFFFFFFFFFFFFFF3232323232323232"
 #define kCardCode                   @"013612345678"
@@ -46,15 +48,26 @@
 @property (nonatomic ,strong)  NSString *typeName;
 @property (nonatomic ,strong)  NSString *mac;
 
-@property (nonatomic ,strong)  NSMutableArray *loadMac;
-
 @property (nonatomic ,strong)  NSMutableArray *canUseMac;
 @property (nonatomic ,strong)  NSMutableArray *canUsePassWord;
 @property (nonatomic ,strong)  NSMutableArray *canUseBuilding;
 @property (nonatomic ,strong)  NSMutableArray *canUseTypeName;
+@property (nonatomic ,strong)  NSMutableArray *canUseManufacturerIdArr;
+
+@property (nonatomic ,strong)  NSMutableArray *loadMac;
+
+
 
 @end
 @implementation ViewController
+
+- (NSMutableArray *)canUseManufacturerIdArr;
+{
+    if (!_canUseManufacturerIdArr) {
+        _canUseManufacturerIdArr =  [NSMutableArray array];
+    }
+    return _canUseManufacturerIdArr;
+}
 
 - (NSMutableArray *)canUseBuilding;
 {
@@ -139,10 +152,11 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"设备初始化中......" preferredStyle:UIAlertControllerStyleAlert];
-    
-    [self presentViewController:alertController animated:YES completion:nil];
-    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(dismissAlertView:) userInfo:alertController repeats:NO];
+//    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"设备初始化中......" preferredStyle:UIAlertControllerStyleAlert];
+//
+//    [self presentViewController:alertController animated:YES completion:nil];
+//    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(dismissAlertView:) userInfo:alertController repeats:NO];
+   
     
 }
 
@@ -164,10 +178,10 @@
     [super viewDidLoad];
     self.macArr = [NSMutableArray array];
     [self loadDate];
-    [self initDevice];
+//    [self initDevice];
     [self.btnInit addTarget:self action:@selector(initDevice) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.macOpenDoor addTarget:self action:@selector(openDoorWithMac:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.macOpenDoor addTarget:self action:@selector(openDoorWithMac:) forControlEvents:UIControlEventTouchUpInside];
     self.scanResult.placeholder = @"设备扫描结果";
     self.scanResult.enabled = NO;
     [self.firstFloorBtn addTarget:self action:@selector(chooseFloor1) forControlEvents:UIControlEventTouchUpInside];
@@ -179,19 +193,16 @@
 - (void)initDevice{
     self.scanResult.text = @"设备扫描结果";
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"设备初始化中......" preferredStyle:UIAlertControllerStyleAlert];
-    
     [self presentViewController:alertController animated:YES completion:nil];
     XHDeviceScan *scan = [XHDeviceScan new];
     [scan initSDK];
     [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(dismissAlertView:) userInfo:alertController repeats:NO];
-    
 }
 //查设备
 - (IBAction)checkDevice:(id)sender {
     XHDeviceScan *scan = [XHDeviceScan new];
     [scan showDevice];
 //    _macArr = scan.macArr;
-//    _macArr = @[@"8CDE52111123",@"12524585445514",@"327A6A6E6F504E4231",@"64951695432649565",@"3481F40D4BD4"];
     _macArr = [NSMutableArray arrayWithArray:scan.macArr];
     NSString *cachePatch = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
     NSString *filePath = [cachePatch stringByAppendingPathComponent:@"devices.plist"];
@@ -214,16 +225,26 @@
                 NSString *typeNameStr = self.typeNameArr[j];
                 NSString *typeIdStr = self.typeIdArr[j];
                 NSString *passWordStr = self.passWordArr[j];
-                NSString *manufacturerIdStr = self.manufacturerIdArr[j];
+                NSString *manufacturerIdStr = [NSString stringWithFormat:@"%@",self.manufacturerIdArr[j]];
                 NSString *buildingNameStr = self.buildingNameArr[j];
                 [self.canUseMac addObject:macStr];
                 [self.canUseTypeName addObject:typeNameStr];
                 [self.canUseBuilding addObject:buildingNameStr];
                 [self.canUsePassWord addObject:passWordStr];
+                [self.canUseManufacturerIdArr addObject:manufacturerIdStr];
                 NSLog(@"\ndeviceMac:%@\n---typeNameStr:%@\n---typeIdStr:%@\n---passWordStr:%@\n---manufacturerIdStr:%@\n---buildingNameStr:%@\n",macStr, typeNameStr,typeIdStr,passWordStr,manufacturerIdStr,buildingNameStr);
             }
         }
     }
+    DeviceViewController *deviceVC = [DeviceViewController new];
+    [self presentViewController:deviceVC animated:YES completion:nil];
+    deviceVC.typeName = self.canUseTypeName;
+    deviceVC.building = self.canUseBuilding;
+    deviceVC.mac = self.canUseMac;
+    deviceVC.passWord  = self.canUsePassWord;
+    deviceVC.manufacturerId = self.canUseManufacturerIdArr;
+    
+    /*
     UIAlertController *deviceActionSheet = [UIAlertController alertControllerWithTitle:@"选择需要开启的设备" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     for (int i = 0; i < self.canUseMac.count; i ++) {
         NSString *mac = _canUseMac                                                                            [i];
@@ -239,35 +260,33 @@
         [deviceActionSheet addAction:_device];
         
     }
+     */
+     
     [self.loadMac removeAllObjects];
     [self.buildingNameArr removeAllObjects];
     [self.typeNameArr removeAllObjects];
     [self.typeIdArr removeAllObjects];
     [self.passWordArr removeAllObjects];
     [self.manufacturerIdArr removeAllObjects];
-    [self.canUseMac removeAllObjects];
-    [self.canUseTypeName removeAllObjects];
-    [self.canUseBuilding removeAllObjects];
-    [self.canUsePassWord removeAllObjects];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-                   
-    [deviceActionSheet addAction:cancelAction];
-    [self presentViewController:deviceActionSheet animated:YES completion:nil];
-    
+
+//    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+//                   
+//    [deviceActionSheet addAction:cancelAction];
+//    [self presentViewController:deviceActionSheet animated:YES completion:nil];
+
     
     
 }
 
 //开门
-- (void)openDoorWithMac:(NSString *)mac{
-    XHOpenDoor *openDoor = [XHOpenDoor new];
-    NSString *deviceKey = self.deviceKey;
-    // NSString *macStr = _macStr;
-    NSString *time = @"60";
-    NSString *factory = @"LFDoor";
-    [openDoor openDoorCheckedWithMac:_mac deviceKey:deviceKey outputActiveTime:time factory:factory];
-    NSLog(@"%@----%@",_mac,deviceKey);
-}
+//- (void)openDoorWithMac:(NSString *)mac{
+//    XHOpenDoor *openDoor = [XHOpenDoor new];
+//    NSString *deviceKey = self.deviceKey;
+//    // NSSt
+//    NSString *factory = @"LFDoor";
+//    [openDoor openDoorCheckedWithMac:<#(NSString *)#> deviceKey:<#(NSString *)#> manufacturerId:<#(NSString *)#>];
+//    NSLog(@"%@----%@",_mac,deviceKey);
+//}
 //呼梯--上
 - (IBAction)callElevatorUp:(id)sender {
     XHCallElevatorUp *callElevatorUp = [XHCallElevatorUp new];

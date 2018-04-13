@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface TSLOpenDoor : NSObject
-
+#import <Terminus/TerminusApi.h>
+@interface TSLOpenDoor : NSObject <TerminusBleDelegate>
+@property (nonatomic,weak)TerminusBleCommunicationManager * bleManger;
+@property (nonatomic ,strong)  NSMutableArray *keysArr;
+@property (nonatomic ,strong)  NSMutableArray *dataSource;
 @end

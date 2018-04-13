@@ -10,5 +10,5 @@
 
 @interface XHOpenDoor : NSObject
 //传入mac开门
-- (void)openDoorCheckedWithMac:(NSString *)mac deviceKey:(NSString *)deviceKey outputActiveTime:(NSString *)time factory:(NSString *)factoryStr;
+- (void)openDoorCheckedWithMac:(NSString *)mac deviceKey:(NSString *)deviceKey manufacturerId:(NSString *)manufacturerId;
 @end

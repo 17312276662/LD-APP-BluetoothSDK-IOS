@@ -9,39 +9,51 @@
 #import "XHOpenDoor.h"
 @implementation XHOpenDoor
 //传入mac开门
--(void)openDoorCheckedWithMac:(NSString *)mac deviceKey:(NSString *)deviceKey outputActiveTime:(NSString *)time factory:(NSString *)factoryStr{
+-(void)openDoorCheckedWithMac:(NSString *)mac deviceKey:(NSString *)deviceKey manufacturerId:(NSString *)manufacturerId{
+    if ([manufacturerId isEqualToString:@"1"]) {
+        [self TSLOpenDoor];
+    }else{
+        [self LFOpenDoorWithMac:mac AndPassWord:deviceKey];
+    }
+}
+
+- (void)TSLOpenDoor{
+    NSLog(@"TSLOpenDoor");
+}
+
+- (void)LFOpenDoorWithMac:(NSString *)mac AndPassWord:(NSString *)password{
+    NSLog(@"LFOpenDoor");
     //开门字典
-    
+    NSString *time = @"60";
     if (mac) {
-    NSDictionary *openDict = @{                               // 类名
-                               @"className" : @"LFOpenDoor",
-                               // 数据参数
-                               @"propertys" : @{@"mac": mac,
-                                                  
-                                                @"deviceKey": deviceKey,
-                                                
-                                                @"time":time,
-                                                
-                                                @"factoryStr":factoryStr
-                                                },
-                               // 调用方法名
-                               @"method" : @"openDoor"};
-    
-    Class class = NSClassFromString(@"LFOpenDoor");
-    NSObject *openDoor = [[class alloc] init];
-    // 获取参数列表，使用枚举的方式，对控制器属性进行KVC赋值
-    NSDictionary *parameter = openDict[@"propertys"];
-    [parameter enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-        // 在属性赋值时，做容错处理，防止因为后台数据导致的异常
-        if ([openDoor respondsToSelector:NSSelectorFromString(key)]) {
-            [openDoor setValue:obj forKey:key];
-        }
-    }];
-    // 从字典中获取方法名，并调用对应的方法
-    SEL selector = NSSelectorFromString(openDict[@"method"]);
-    [openDoor performSelector:selector];
+        NSDictionary *openDict = @{                               // 类名
+                                   @"className" : @"LFOpenDoor",
+                                   // 数据参数
+                                   @"propertys" : @{@"mac": mac,
+                                                    
+                                                    @"deviceKey": password,
+                                                    
+                                                    @"time":time,
+                                                    },
+                                   // 调用方法名
+                                   @"method" : @"openDoor"};
+        
+        Class class = NSClassFromString(@"LFOpenDoor");
+        NSObject *openDoor = [[class alloc] init];
+        // 获取参数列表，使用枚举的方式，对控制器属性进行KVC赋值
+        NSDictionary *parameter = openDict[@"propertys"];
+        [parameter enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+            // 在属性赋值时，做容错处理，防止因为后台数据导致的异常
+            if ([openDoor respondsToSelector:NSSelectorFromString(key)]) {
+                [openDoor setValue:obj forKey:key];
+            }
+        }];
+        // 从字典中获取方法名，并调用对应的方法
+        SEL selector = NSSelectorFromString(openDict[@"method"]);
+        [openDoor performSelector:selector];
     }else{
         NSLog(@"请选择设备");
     }
 }
+
 @end

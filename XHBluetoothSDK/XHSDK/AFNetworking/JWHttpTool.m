@@ -16,7 +16,7 @@
     // 1.创建请求管理者
     AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
   //  mgr.requestSerializer= [AFHTTPRequestSerializer serializer];
-    [mgr.requestSerializer setCachePolicy:NSURLRequestReturnCacheDataElseLoad];
+//    [mgr.requestSerializer setCachePolicy:NSURLRequestReturnCacheDataElseLoad];
     [mgr.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     mgr.requestSerializer.timeoutInterval = 10.f;
     [mgr.requestSerializer didChangeValueForKey:@"timeoutInterval"];

@@ -7,6 +7,7 @@
 //
 
 #import "XHDeviceScan.h"
+@class XHDeviceScan;
 @implementation XHDeviceScan
 - (void)initSDK{
     Class class = NSClassFromString(@"LFDeviceScan");
