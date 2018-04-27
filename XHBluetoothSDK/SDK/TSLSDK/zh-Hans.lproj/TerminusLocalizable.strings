@@ -1,0 +1,31 @@
+/* 
+  TerminusLocalizable.strings
+  Terminus
+
+  Created by Huangdroid on 15/11/20.
+  Copyright © 2015年 重庆市特斯联科技有限公司. All rights reserved.
+*/
+"errorMessage_not_found"                         = "设备未找到,操作超时";
+"errorMessage_StatePoweredOff"                  = "系统检测到您到蓝牙未打开！";
+"errorMessage_StateUnauthorized"                = "系统检测到您到蓝牙未授权！";
+"errorMessage_StateUnsupported"                         = "系统检测到您到蓝牙不支持！";
+"errorMessage_StateResetting"                         = "系统检测到您到蓝牙重启中！";
+"errorMessage_StateUnknown"                         = "系统检测到您的蓝牙异常！";
+"errorMessage_StateClosed"                         = "系统检测到您到蓝牙未打开！";
+"errorMessage_dataError"                         = "通信数据错误";
+"errorMessage_AuthorDataError"                         = "授权数据错误";
+"errorMessage_SendDataTimeout"                         = "发送数据超时！";
+"errorMessage_PasswordError"                         = "密码被修改，请与管理员联系!";
+"errorMessage_UserCleaning"                         = "用户已清除";
+"errorMessage_RoomLocked"                         = "室内已反锁";
+"errorMessage_UserUnable"                         = "用户被禁用";
+"errorMessage_PiarFull"                         = "配对数量已满，需要清除用户";
+"errorMessage_ReciverDataError"                         = "接收数据错误";
+"errorMessage_Success"                         = "操作成功";
+"errorMessage_OpenDoorSuccess"                         = "开门成功";
+"errorMessage_OpenDoorSuccessResolveError"                         = "开门成功，解析数据失败";
+"errorMessage_CheckChiperError"                         = "校验失败";
+"errorMessage_PiarErrorResolveError"                         = "配对失败，解析数据失败";
+"errorMessage_GetDataSuccess"                         = "获取成功";
+"errorMessage_GetDataSuccessResolveError"                         = "获取成功，解析数据失败";
+"errorMessage_NO_button_error"                         = "该操作未按设置键";
