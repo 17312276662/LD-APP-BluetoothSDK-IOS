@@ -34,6 +34,7 @@
 //    params[@"token"] = @"508b2483832f141306c43459b9199bbe";
     
     [JWHttpTool get:HTTP_CONECT(BASE_URL,@"/queryAvaiableResByMobile") params:params success:^(id json) {
+        
         NSArray *list = [ContentModel mj_objectArrayWithKeyValuesArray:json[@"content"]];
         self.typeNameArr = [NSMutableArray new];
         self.macArr = [NSMutableArray new];

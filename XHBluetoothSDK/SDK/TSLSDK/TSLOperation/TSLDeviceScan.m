@@ -7,10 +7,9 @@
 //
 
 #import "TSLDeviceScan.h"
-#import <Terminus/TerminusApi.h>
 #import "BlueModel.h"
 @class TSLDeviceScan;
-@interface TSLDeviceScan () <TerminusBleDelegate>;
+@interface TSLDeviceScan ();
 @property (nonatomic,strong) NSMutableArray *deviceArr;
 @property (nonatomic,weak) TerminusBleCommunicationManager *blueManger;
 @end
@@ -20,10 +19,11 @@
     
     [[TerminusBleCommunicationManager shareManagerInstance] ClearBleConnectCache];
     self.deviceArr = [NSMutableArray array];
+    
     self.blueManger = [TerminusBleCommunicationManager shareManagerInstance];
     self.blueManger.TBLEDelegate = self;
-    [self.blueManger startScanDevice:nil];
-    NSArray *arr = @[@"64951695432649565",@"3481F40D4BD4"];
+//    [self.blueManger startScanDevice:nil];
+    NSArray *arr = @[@"64951695432649565",@"3481F40D4BD4",@"3481F40D37F9"];
     self.deviceArr = [NSMutableArray arrayWithArray:arr];
     return _deviceArr;
 }

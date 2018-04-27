@@ -15,7 +15,6 @@
 		A521BC401FCBB88A007B0E41 /* key_type_signal.plist in Resources */ = {isa = PBXBuildFile; fileRef = A521BC341FCBB889007B0E41 /* key_type_signal.plist */; };
 		A521BC411FCBB88A007B0E41 /* ble_device_name.txt in Resources */ = {isa = PBXBuildFile; fileRef = A521BC351FCBB88A007B0E41 /* ble_device_name.txt */; };
 		A521BC421FCBB88A007B0E41 /* TerminusLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A521BC371FCBB88A007B0E41 /* TerminusLocalizable.strings */; };
-		A521BC431FCBB88A007B0E41 /* TerminusUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A521BC391FCBB88A007B0E41 /* TerminusUI.framework */; };
 		A521BC441FCBB88A007B0E41 /* TerminusUISource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A521BC3A1FCBB88A007B0E41 /* TerminusUISource.bundle */; };
 		A521BC451FCBB88A007B0E41 /* Terminus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A521BC3B1FCBB88A007B0E41 /* Terminus.framework */; };
 		A521BC461FCBB88A007B0E41 /* TSLSSKeychain.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A521BC3C1FCBB88A007B0E41 /* TSLSSKeychain.bundle */; };
@@ -27,7 +26,8 @@
 		A521BC601FCBBAC3007B0E41 /* RfmSimpleDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = A521BC541FCBBAC3007B0E41 /* RfmSimpleDevice.m */; };
 		A521BC611FCBBAC3007B0E41 /* NSData+YYExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = A521BC581FCBBAC3007B0E41 /* NSData+YYExtend.m */; };
 		A521BC621FCBBAC3007B0E41 /* NSString+YYExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = A521BC5A1FCBBAC3007B0E41 /* NSString+YYExtend.m */; };
-		A52C5865207F8B9900E793EC /* TerminusLocalizable.strings in Frameworks */ = {isa = PBXBuildFile; fileRef = A521BC3E1FCBB88A007B0E41 /* TerminusLocalizable.strings */; };
+		A52804CF2083B01300696A59 /* RfmAccessControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52804CE2083B01200696A59 /* RfmAccessControl.framework */; };
+		A52804D020843ACC00696A59 /* TerminusLocalizable.strings in Frameworks */ = {isa = PBXBuildFile; fileRef = A521BC2C1FCBB834007B0E41 /* TerminusLocalizable.strings */; };
 		A52F18A11FBC849D00DDBB5D /* XHGetManufacturerName.m in Sources */ = {isa = PBXBuildFile; fileRef = A52F18A01FBC849D00DDBB5D /* XHGetManufacturerName.m */; };
 		A55199C41FB1B6A7008BB53E /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = A55199C31FB1B6A7008BB53E /* Foundation+Log.m */; };
 		A55491BD1FC66A9200461B38 /* TSLOpenDoor.m in Sources */ = {isa = PBXBuildFile; fileRef = A55491BC1FC66A9200461B38 /* TSLOpenDoor.m */; };
@@ -127,6 +127,7 @@
 		A521BC591FCBBAC3007B0E41 /* NSString+YYExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+YYExtend.h"; sourceTree = "<group>"; };
 		A521BC5A1FCBBAC3007B0E41 /* NSString+YYExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+YYExtend.m"; sourceTree = "<group>"; };
 		A521BC5B1FCBBAC3007B0E41 /* YYCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYCategory.h; sourceTree = "<group>"; };
+		A52804CE2083B01200696A59 /* RfmAccessControl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RfmAccessControl.framework; path = XHBluetoothSDK/SDK/RfmAccessControl/RfmAccessControl.framework; sourceTree = SOURCE_ROOT; };
 		A52F189F1FBC849D00DDBB5D /* XHGetManufacturerName.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHGetManufacturerName.h; sourceTree = "<group>"; };
 		A52F18A01FBC849D00DDBB5D /* XHGetManufacturerName.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHGetManufacturerName.m; sourceTree = "<group>"; };
 		A55199C31FB1B6A7008BB53E /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
@@ -229,8 +230,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A52C5865207F8B9900E793EC /* TerminusLocalizable.strings in Frameworks */,
-				A521BC431FCBB88A007B0E41 /* TerminusUI.framework in Frameworks */,
+				A52804D020843ACC00696A59 /* TerminusLocalizable.strings in Frameworks */,
+				A52804CF2083B01300696A59 /* RfmAccessControl.framework in Frameworks */,
 				A521BC451FCBB88A007B0E41 /* Terminus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,6 +288,7 @@
 		A521BC481FCBBAC3007B0E41 /* ReformerIOController */ = {
 			isa = PBXGroup;
 			children = (
+				A52804CE2083B01200696A59 /* RfmAccessControl.framework */,
 				A521BC491FCBBAC3007B0E41 /* DesDLL.c */,
 				A521BC4A1FCBBAC3007B0E41 /* DesDLL.h */,
 				A521BC4B1FCBBAC3007B0E41 /* RfmAccessControl.h */,
@@ -992,6 +994,7 @@
 					"$(PROJECT_DIR)/XHBluetoothSDK/SDK",
 					"$(PROJECT_DIR)/XHBluetoothSDK/SDK/TSLSDK",
 					"$(PROJECT_DIR)/XHBluetoothSDK/SDK/TSLNewSDK",
+					"$(PROJECT_DIR)/XHBluetoothSDK/SDK/RfmAccessControl",
 				);
 				INFOPLIST_FILE = "/Users/xinhuapro/Git仓库/LD-APP-BluetoothSDK-IOS/XHBluetoothSDK/Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1011,6 +1014,7 @@
 					"$(PROJECT_DIR)/XHBluetoothSDK/SDK",
 					"$(PROJECT_DIR)/XHBluetoothSDK/SDK/TSLSDK",
 					"$(PROJECT_DIR)/XHBluetoothSDK/SDK/TSLNewSDK",
+					"$(PROJECT_DIR)/XHBluetoothSDK/SDK/RfmAccessControl",
 				);
 				INFOPLIST_FILE = "/Users/xinhuapro/Git仓库/LD-APP-BluetoothSDK-IOS/XHBluetoothSDK/Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

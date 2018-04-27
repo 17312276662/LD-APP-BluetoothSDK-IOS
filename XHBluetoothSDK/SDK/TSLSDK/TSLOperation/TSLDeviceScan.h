@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-@interface TSLDeviceScan : NSObject 
+#import <Terminus/TerminusApi.h>
+@interface TSLDeviceScan : NSObject <TerminusBleDelegate>
 //扫描设备
 - (NSMutableArray *)showDevice;
 @end

@@ -15,6 +15,7 @@
 #import "DeviceModel.h"
 #import "MJExtension.h"
 #import "DeviceViewController.h"
+#import "TSLDeviceScan.h"
 
 #define kDeviceKey                  @"4c464b47396764765737336f51317936"
 #define kDeviceNewKey               @"FFFFFFFFFFFFFFFF3232323232323232"
@@ -202,6 +203,8 @@
 - (IBAction)checkDevice:(id)sender {
     XHDeviceScan *scan = [XHDeviceScan new];
     [scan showDevice];
+    TSLDeviceScan *newScan = [TSLDeviceScan new];
+    [newScan showDevice];
 //    _macArr = scan.macArr;
     _macArr = [NSMutableArray arrayWithArray:scan.macArr];
     NSString *cachePatch = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];

@@ -95,7 +95,8 @@
         _deviceArr = [NSMutableArray arrayWithObject:_macStr];
     }
     //return _deviceArr;
-    NSArray *arr = @[@"8CDE52111123",@"12524585445514",@"327A6A6E6F504E4231"];
+    [RfmSession sharedManager].delegate = self;
+    NSArray *arr = @[@"3237534D4335636151",@"12524585445514",@"32676B6279724D4145"];
     self.deviceArr = [NSMutableArray arrayWithArray:arr];
     return _deviceArr;
 }
