@@ -13,12 +13,9 @@
 @implementation TSLOpenDoor
 
 - (void)openDoor{
-    [[TerminusBleCommunicationManager shareManagerInstance] ClearBleConnectCache];
     self.keysArr = [NSMutableArray array];
     self.bleManger = [TerminusBleCommunicationManager shareManagerInstance];
     self.keysArr = [TerminusApiManager getUserAllKeys];
-    self.bleManger.TBLEDelegate = self;
-    [self.bleManger startScanDevice:nil];
     
     
     TerminusKeyBean *bean = (TerminusKeyBean *)self.keysArr;
@@ -39,22 +36,15 @@
         phoneName = @"ErrorUser";
     }
     
-    /*
-     NSString *mSendData = [TerminusApiManager getOpenDoorData:bean.keyUid PhoneNum:phoneName];
-     if (!mSendData) {
-     return;
-     }
-     self.bleManger.TBLEDelegate  = self;
-     [self.bleManger StartCommonCommunication:mSendData MacAddress:bean.macAddress UUID:bean.keyUid ControlID:BlueHandleOpenDoor];
-     */
-    
     NSDictionary * data = @{
-                            TerminusKeyUid:bean.keyUid,
+//                            TerminusKeyUid:bean.keyUid,
+                            TerminusKeyUid:@"123456",
                             TerminusKeyUserPhone:phoneName, //可选参数
                             };
     
     self.bleManger.TBLEDelegate  = self;
-    [self.bleManger StartCommonCommunicationWithData:data operation:BluetoothOperationHandleOpenDoor LockCode:bean.chipId KeyCate:bean.keyCate];
+//    [self.bleManger StartCommonCommunicationWithData:data operation:BluetoothOperationHandleOpenDoor LockCode:bean.chipId KeyCate:bean.keyCate];
+    [self.bleManger StartCommonCommunicationWithData:data operation:BluetoothOperationHandleOpenDoor LockCode:nil KeyCate:-1];
 }
 
 
@@ -64,7 +54,7 @@
     if (!deviceLocalName) {
         deviceLocalName = peripheral.name;
     }
-    for (BlueModel *model in self.dataSource) {
+    for (BlueModel *model in self.keysArr) {
         if ([model.name isEqualToString:deviceLocalName]){
             model.rssi = RSSI;
 //            [self.tableView reloadData];
@@ -74,7 +64,7 @@
     BlueModel * newModel = [BlueModel new];
     newModel.name = deviceLocalName;
     newModel.rssi = RSSI;
-    [self.dataSource addObject:newModel];
+    [self.keysArr addObject:newModel];
 //    [self.tableView reloadData];
     
 }
@@ -103,8 +93,7 @@
 
 #pragma mark - deleteDateDelegate
 - (void)successDelegate:(TerminusKeyBean *)bean{
-    [self.dataSource removeObject:bean];
-//    [self.tableView reloadData];
+    [self.keysArr removeObject:bean];
 }
 
 @end

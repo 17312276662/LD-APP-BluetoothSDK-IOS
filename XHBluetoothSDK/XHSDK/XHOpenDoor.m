@@ -19,6 +19,12 @@
 
 - (void)TSLOpenDoor{
     NSLog(@"TSLOpenDoor");
+    Class class = NSClassFromString(@"TSLOpenDoor");
+    NSObject *scan = [[class alloc] init];
+    
+    SEL selector = NSSelectorFromString(@"openDoor");
+    NSMutableArray *arr = [NSMutableArray array];
+    arr = [scan performSelector:selector];
 }
 
 - (void)LFOpenDoorWithMac:(NSString *)mac AndPassWord:(NSString *)password{

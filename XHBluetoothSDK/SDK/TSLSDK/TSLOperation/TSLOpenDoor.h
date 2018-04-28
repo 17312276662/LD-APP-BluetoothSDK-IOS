@@ -11,5 +11,6 @@
 @interface TSLOpenDoor : NSObject <TerminusBleDelegate>
 @property (nonatomic,weak)TerminusBleCommunicationManager * bleManger;
 @property (nonatomic ,strong)  NSMutableArray *keysArr;
-@property (nonatomic ,strong)  NSMutableArray *dataSource;
+//@property (nonatomic ,strong)  NSMutableArray *dataSource;
+- (void)openDoor;
 @end

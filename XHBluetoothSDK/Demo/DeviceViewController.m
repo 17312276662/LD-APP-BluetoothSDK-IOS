@@ -133,6 +133,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     XHOpenDoor *openDoor = [XHOpenDoor new];
     [openDoor openDoorCheckedWithMac:self.mac[indexPath.row] deviceKey:self.passWord[indexPath.row] manufacturerId:self.manufacturerId[indexPath.row]];
+    self.tableView.separatorStyle = NO;
     
 
 }

@@ -8,24 +8,64 @@
 
 #import "TSLDeviceScan.h"
 #import "BlueModel.h"
+#import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
 @class TSLDeviceScan;
 @interface TSLDeviceScan ();
+@property (nonatomic ,strong)  NSMutableArray *dataSource;
 @property (nonatomic,strong) NSMutableArray *deviceArr;
 @property (nonatomic,weak) TerminusBleCommunicationManager *blueManger;
+@property (nonatomic ,strong)  NSString *blueName;
 @end
 @implementation TSLDeviceScan
 
-- (NSMutableArray *)showDevice{
+- (void)initAndSettingEquipment{
     
     [[TerminusBleCommunicationManager shareManagerInstance] ClearBleConnectCache];
     self.deviceArr = [NSMutableArray array];
     
     self.blueManger = [TerminusBleCommunicationManager shareManagerInstance];
     self.blueManger.TBLEDelegate = self;
-//    [self.blueManger startScanDevice:nil];
-    NSArray *arr = @[@"64951695432649565",@"3481F40D4BD4",@"3481F40D37F9"];
-    self.deviceArr = [NSMutableArray arrayWithArray:arr];
-    return _deviceArr;
+    [self.blueManger startScanDevice:nil];
+    self.blueName = @"3481F40D4BD4";
+//    NSArray *arr = @[@"64951695432649565",@"3481F40D4BD4",@"3481F40D37F9"];
+//    self.deviceArr = [NSMutableArray arrayWithArray:arr];
+//    [self settingEquipment];
+}
+- (NSMutableArray *)showDevice
+{
+    [self initAndSettingEquipment];
+    NSString * phoneName = nil;
+    UIDevice *myDevice = [UIDevice currentDevice];
+    NSRange rangeNameSucc =[myDevice.name.lowercaseString rangeOfString:@"succ"];
+    NSRange rangeNameFail =[myDevice.name.lowercaseString rangeOfString:@"fail"];
+    
+    // userName lenth 10
+    if (rangeNameSucc.location == NSNotFound || rangeNameFail.location == NSNotFound) {
+        if (phoneName.length > 10) {
+            phoneName = [myDevice.name substringWithRange:NSMakeRange(1, 10)];
+        }else {
+            phoneName = myDevice.name;
+        }
+        
+    }else {
+        phoneName = @"ErrorUser";
+    }
+    
+    
+    [self.blueManger setPierWithPierPwd:@"123456" NewPwd:@"123456" IsAdmin:YES UserName:phoneName];
+    
+//        [self.bleManger setPierWithPierPwd:_txtPwd.text NewPwd:nil IsAdmin:NO UserName:phoneName];
+    
+//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    self.blueManger.TBLEDelegate = self;
+    
+    [self.blueManger StartCommonCommunication:nil MacAddress:self.blueName UUID:nil ControlID:BluetoothOperationPierUpdatePWD LockCode:nil KeyCate:-1];
+    self.dataSource = [NSMutableArray array];
+    self.dataSource = [TerminusApiManager getUserAllKeys];
+    self.deviceArr  = [NSMutableArray array];
+    [self.deviceArr addObject:self.blueName];
+    return self.deviceArr;
 }
 
 #pragma mark - TerminusBleDelegate
@@ -34,7 +74,7 @@
     if (!deviceLocalName) {
         deviceLocalName = peripheral.name;
     }
-    for (BlueModel *model in self.deviceArr) {
+    for (BlueModel *model in self.dataSource) {
         if ([model.name isEqualToString:deviceLocalName]){
             model.rssi = RSSI;
             return;
@@ -43,7 +83,8 @@
     BlueModel * newModel = [BlueModel new];
     newModel.name = deviceLocalName;
     newModel.rssi = RSSI;
-    [self.deviceArr addObject:newModel];
+    self.blueName = newModel.name;
+    [self.dataSource addObject:newModel.name];
     
 }
 
