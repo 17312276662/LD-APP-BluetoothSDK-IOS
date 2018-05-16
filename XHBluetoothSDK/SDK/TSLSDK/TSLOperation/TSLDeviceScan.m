@@ -7,16 +7,19 @@
 //
 
 #import "TSLDeviceScan.h"
+
 #import "BlueModel.h"
 #import <UIKit/UIKit.h>
-#import "MBProgressHUD.h"
+
+/*
 @class TSLDeviceScan;
-@interface TSLDeviceScan ();
+@interface TSLDeviceScan ()<TerminusBleDelegate>;
 @property (nonatomic ,strong)  NSMutableArray *dataSource;
 @property (nonatomic,strong) NSMutableArray *deviceArr;
 @property (nonatomic,weak) TerminusBleCommunicationManager *blueManger;
 @property (nonatomic ,strong)  NSString *blueName;
 @end
+ */
 @implementation TSLDeviceScan
 
 - (void)initAndSettingEquipment{
@@ -32,9 +35,12 @@
 //    self.deviceArr = [NSMutableArray arrayWithArray:arr];
 //    [self settingEquipment];
 }
+
 - (NSMutableArray *)showDevice
 {
+ 
     [self initAndSettingEquipment];
+    
     NSString * phoneName = nil;
     UIDevice *myDevice = [UIDevice currentDevice];
     NSRange rangeNameSucc =[myDevice.name.lowercaseString rangeOfString:@"succ"];
@@ -53,7 +59,7 @@
     }
     
     
-    [self.blueManger setPierWithPierPwd:@"123456" NewPwd:@"123456" IsAdmin:YES UserName:phoneName];
+    [self.blueManger setPierWithPierPwd:@"123456" NewPwd:@"654321" IsAdmin:YES UserName:phoneName];
     
 //        [self.bleManger setPierWithPierPwd:_txtPwd.text NewPwd:nil IsAdmin:NO UserName:phoneName];
     
@@ -65,7 +71,9 @@
     self.dataSource = [TerminusApiManager getUserAllKeys];
     self.deviceArr  = [NSMutableArray array];
     [self.deviceArr addObject:self.blueName];
+ 
     return self.deviceArr;
+     
 }
 
 #pragma mark - TerminusBleDelegate

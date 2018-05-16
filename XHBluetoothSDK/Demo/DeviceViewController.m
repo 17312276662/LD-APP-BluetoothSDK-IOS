@@ -81,13 +81,6 @@
     [self.view addSubview:self.tableView];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-//    [[TerminusBleCommunicationManager shareManagerInstance] ClearBleConnectCache];
-//    self.dataSource = [NSMutableArray array];
-//    self.bleManger = [TerminusBleCommunicationManager shareManagerInstance];
-//    self.dataSource = [TerminusApiManager getUserAllKeys];
-//    self.bleManger.TBLEDelegate = self;
-//    [self.bleManger startScanDevice:nil];
-//    [self.tableView reloadData];
     UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(150, 600, 80, 40)];
     btn.backgroundColor = [UIColor purpleColor];
     [btn setTitle:@"收起" forState:UIControlStateNormal];
@@ -118,10 +111,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
     for (int i = 0; i < self.mac.count; i ++) {
-//        NSString *Mac = _mac                                                                            [i];
-//        NSString *PassWord =_passWord[i];
         self.deviceName = [NSString stringWithFormat:@"%@的%@，mac:%@",_building[i],_typeName[i],_mac[i]];
-        
         [self.cellArr addObject:self.deviceName];
     }
     cell.textLabel.font = [UIFont systemFontOfSize:12];

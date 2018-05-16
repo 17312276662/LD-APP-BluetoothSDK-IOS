@@ -96,8 +96,8 @@
     }
     //return _deviceArr;
     [RfmSession sharedManager].delegate = self;
-    NSArray *arr = @[@"3237534D4335636151",@"12524585445514",@"32676B6279724D4145"];
-    self.deviceArr = [NSMutableArray arrayWithArray:arr];
+//    NSArray *arr = @[@"3237534D4335636151",@"12524585445514",@"32676B6279724D4145"];
+//    self.deviceArr = [NSMutableArray arrayWithArray:arr];
     return _deviceArr;
 }
 

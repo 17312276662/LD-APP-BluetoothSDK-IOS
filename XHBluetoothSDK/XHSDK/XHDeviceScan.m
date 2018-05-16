@@ -34,9 +34,10 @@
     Class class = NSClassFromString(@"TSLDeviceScan");
     NSObject *scan = [[class alloc] init];
     
-    SEL selector = NSSelectorFromString(@"showDevice");
-    NSMutableArray *arr = [NSMutableArray array];
-    arr = [scan performSelector:selector];
-    [_macArr addObjectsFromArray:arr];
+    SEL selector = NSSelectorFromString(@"initAndSettingEquipment");
+//    NSMutableArray *arr = [NSMutableArray array];
+//    arr = [scan performSelector:selector];
+    [scan performSelector:selector];
+//    [_macArr addObjectsFromArray:arr];
 }
 @end

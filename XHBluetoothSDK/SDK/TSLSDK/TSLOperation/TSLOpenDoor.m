@@ -33,12 +33,14 @@
         }
         
     }else {
+        
         phoneName = @"ErrorUser";
+        
     }
     
     NSDictionary * data = @{
-//                            TerminusKeyUid:bean.keyUid,
-                            TerminusKeyUid:@"123456",
+                            TerminusKeyUid:bean.keyUid,
+//                            TerminusKeyUid:@"657363547fdg6557ddh3658584svxg65",
                             TerminusKeyUserPhone:phoneName, //可选参数
                             };
     
@@ -57,7 +59,6 @@
     for (BlueModel *model in self.keysArr) {
         if ([model.name isEqualToString:deviceLocalName]){
             model.rssi = RSSI;
-//            [self.tableView reloadData];
             return;
         }
     }
@@ -65,8 +66,6 @@
     newModel.name = deviceLocalName;
     newModel.rssi = RSSI;
     [self.keysArr addObject:newModel];
-//    [self.tableView reloadData];
-    
 }
 
 - (void) didReceiveData:(id)data {

@@ -164,7 +164,8 @@
 - (void)loadDate{
     _date = [XHCacheDate new];
     self.buildingId = @"";
-    self.mobile = @"13813486976";
+//    self.mobile = @"13813486976";
+    self.mobile = self.phoneTextField.text;
 //    self.mobile = @"";
     [_date loadAlleviceWithMobile:self.mobile BuildingId:self.buildingId];
     
@@ -178,8 +179,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.macArr = [NSMutableArray array];
-    [self loadDate];
-//    [self initDevice];
+    [self initDevice];
     [self.btnInit addTarget:self action:@selector(initDevice) forControlEvents:UIControlEventTouchUpInside];
     
 //    [self.macOpenDoor addTarget:self action:@selector(openDoorWithMac:) forControlEvents:UIControlEventTouchUpInside];
@@ -201,10 +201,19 @@
 }
 //查设备
 - (IBAction)checkDevice:(id)sender {
+//    [self loadDate];
+    if ([self.phoneTextField.text isEqualToString:@""]) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"请输入手机号码" preferredStyle:UIAlertControllerStyleAlert];
+        [self presentViewController:alertController animated:YES completion:nil];
+        [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(dismissAlertView:) userInfo:alertController repeats:NO];
+    }else{
+        [self loadDate];
+    }
+    
     XHDeviceScan *scan = [XHDeviceScan new];
     [scan showDevice];
-    TSLDeviceScan *newScan = [TSLDeviceScan new];
-    [newScan showDevice];
+//    TSLDeviceScan *newScan = [TSLDeviceScan new];
+//    [newScan showDevice];
 //    _macArr = scan.macArr;
     _macArr = [NSMutableArray arrayWithArray:scan.macArr];
     NSString *cachePatch = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
@@ -246,6 +255,7 @@
     deviceVC.mac = self.canUseMac;
     deviceVC.passWord  = self.canUsePassWord;
     deviceVC.manufacturerId = self.canUseManufacturerIdArr;
+    
     
     /*
     UIAlertController *deviceActionSheet = [UIAlertController alertControllerWithTitle:@"选择需要开启的设备" message:nil preferredStyle:UIAlertControllerStyleActionSheet];

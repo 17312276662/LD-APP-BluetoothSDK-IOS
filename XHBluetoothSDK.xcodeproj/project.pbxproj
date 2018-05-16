@@ -28,7 +28,6 @@
 		A521BC621FCBBAC3007B0E41 /* NSString+YYExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = A521BC5A1FCBBAC3007B0E41 /* NSString+YYExtend.m */; };
 		A52804CF2083B01300696A59 /* RfmAccessControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52804CE2083B01200696A59 /* RfmAccessControl.framework */; };
 		A52804D020843ACC00696A59 /* TerminusLocalizable.strings in Frameworks */ = {isa = PBXBuildFile; fileRef = A521BC2C1FCBB834007B0E41 /* TerminusLocalizable.strings */; };
-		A52F18A11FBC849D00DDBB5D /* XHGetManufacturerName.m in Sources */ = {isa = PBXBuildFile; fileRef = A52F18A01FBC849D00DDBB5D /* XHGetManufacturerName.m */; };
 		A55199C41FB1B6A7008BB53E /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = A55199C31FB1B6A7008BB53E /* Foundation+Log.m */; };
 		A55491BD1FC66A9200461B38 /* TSLOpenDoor.m in Sources */ = {isa = PBXBuildFile; fileRef = A55491BC1FC66A9200461B38 /* TSLOpenDoor.m */; };
 		A55491C01FC6C9B700461B38 /* TSLDeviceScan.m in Sources */ = {isa = PBXBuildFile; fileRef = A55491BF1FC6C9B700461B38 /* TSLDeviceScan.m */; };
@@ -128,8 +127,6 @@
 		A521BC5A1FCBBAC3007B0E41 /* NSString+YYExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+YYExtend.m"; sourceTree = "<group>"; };
 		A521BC5B1FCBBAC3007B0E41 /* YYCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYCategory.h; sourceTree = "<group>"; };
 		A52804CE2083B01200696A59 /* RfmAccessControl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RfmAccessControl.framework; path = XHBluetoothSDK/SDK/RfmAccessControl/RfmAccessControl.framework; sourceTree = SOURCE_ROOT; };
-		A52F189F1FBC849D00DDBB5D /* XHGetManufacturerName.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHGetManufacturerName.h; sourceTree = "<group>"; };
-		A52F18A01FBC849D00DDBB5D /* XHGetManufacturerName.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHGetManufacturerName.m; sourceTree = "<group>"; };
 		A55199C31FB1B6A7008BB53E /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		A55491BB1FC66A9200461B38 /* TSLOpenDoor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSLOpenDoor.h; sourceTree = "<group>"; };
 		A55491BC1FC66A9200461B38 /* TSLOpenDoor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSLOpenDoor.m; sourceTree = "<group>"; };
@@ -325,13 +322,6 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
-		A52C5864207F8B9900E793EC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		A52F18A21FBEBEC000DDBB5D /* TSLSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -456,7 +446,6 @@
 				A5F683F81F8DA71D00165368 /* XHBluetoothSDKTests */,
 				A5F684031F8DA71D00165368 /* XHBluetoothSDKUITests */,
 				A5F683DD1F8DA71C00165368 /* Products */,
-				A52C5864207F8B9900E793EC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -542,8 +531,6 @@
 				A5AA0E491F90ADE30098548F /* XHCallElevatorDown.m */,
 				A5AA0E571F90BDD60098548F /* XHChooseFloor.h */,
 				A5AA0E581F90BDD60098548F /* XHChooseFloor.m */,
-				A52F189F1FBC849D00DDBB5D /* XHGetManufacturerName.h */,
-				A52F18A01FBC849D00DDBB5D /* XHGetManufacturerName.m */,
 				A582B22E1FDA981A000545B4 /* DeviceModel.h */,
 				A582B22F1FDA981A000545B4 /* DeviceModel.m */,
 			);
@@ -744,7 +731,6 @@
 			files = (
 				A5AA0E471F90ADC70098548F /* XHCallElevatorUp.m in Sources */,
 				A5F684681F8E09AC00165368 /* LFDeviceScan.m in Sources */,
-				A52F18A11FBC849D00DDBB5D /* XHGetManufacturerName.m in Sources */,
 				A521BC5E1FCBBAC3007B0E41 /* RfmDeviceManager.m in Sources */,
 				A521BC611FCBBAC3007B0E41 /* NSData+YYExtend.m in Sources */,
 				A5F6845A1F8DAD8400165368 /* ViewController.m in Sources */,
