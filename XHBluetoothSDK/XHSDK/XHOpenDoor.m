@@ -11,12 +11,12 @@
 //传入mac开门
 -(void)openDoorCheckedWithMac:(NSString *)mac deviceKey:(NSString *)deviceKey manufacturerId:(NSString *)manufacturerId{
     if ([manufacturerId isEqualToString:@"1"]) {
-        [self TSLOpenDoor];
+//        [self TSLOpenDoor];
     }else{
         [self LFOpenDoorWithMac:mac AndPassWord:deviceKey];
     }
 }
-
+/*
 - (void)TSLOpenDoor{
     NSLog(@"TSLOpenDoor");
     Class class = NSClassFromString(@"TSLOpenDoor");
@@ -26,7 +26,7 @@
     NSMutableArray *arr = [NSMutableArray array];
     arr = [scan performSelector:selector];
 }
-
+*/
 - (void)LFOpenDoorWithMac:(NSString *)mac AndPassWord:(NSString *)password{
     NSLog(@"LFOpenDoor");
     //开门字典

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <UIKit/UIKit.h>
 @interface XHDeviceScan : NSObject
 @property (nonatomic ,strong)  NSMutableArray *macArr;
 //初始化SDK

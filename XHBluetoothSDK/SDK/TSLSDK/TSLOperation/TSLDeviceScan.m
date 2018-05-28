@@ -11,31 +11,25 @@
 #import "BlueModel.h"
 #import <UIKit/UIKit.h>
 
-/*
+
 @class TSLDeviceScan;
-@interface TSLDeviceScan ()<TerminusBleDelegate>;
-@property (nonatomic ,strong)  NSMutableArray *dataSource;
+@interface TSLDeviceScan () <TerminusBleDelegate>;
 @property (nonatomic,strong) NSMutableArray *deviceArr;
 @property (nonatomic,weak) TerminusBleCommunicationManager *blueManger;
 @property (nonatomic ,strong)  NSString *blueName;
 @end
- */
+
 @implementation TSLDeviceScan
 
-- (void)initAndSettingEquipment{
-    
+- (void)showDevice{
+
     [[TerminusBleCommunicationManager shareManagerInstance] ClearBleConnectCache];
-    self.deviceArr = [NSMutableArray array];
-    
+    self.dataSource = [NSMutableArray array];
     self.blueManger = [TerminusBleCommunicationManager shareManagerInstance];
     self.blueManger.TBLEDelegate = self;
     [self.blueManger startScanDevice:nil];
-    self.blueName = @"3481F40D4BD4";
-//    NSArray *arr = @[@"64951695432649565",@"3481F40D4BD4",@"3481F40D37F9"];
-//    self.deviceArr = [NSMutableArray arrayWithArray:arr];
-//    [self settingEquipment];
 }
-
+/*
 - (NSMutableArray *)showDevice
 {
  
@@ -75,6 +69,7 @@
     return self.deviceArr;
      
 }
+*/
 
 #pragma mark - TerminusBleDelegate
 - (void)didFoundBleDevice:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
@@ -84,16 +79,15 @@
     }
     for (BlueModel *model in self.dataSource) {
         if ([model.name isEqualToString:deviceLocalName]){
-            model.rssi = RSSI;
-            return;
+           
+            
         }
     }
     BlueModel * newModel = [BlueModel new];
     newModel.name = deviceLocalName;
-    newModel.rssi = RSSI;
-    self.blueName = newModel.name;
-    [self.dataSource addObject:newModel.name];
     
+    self.blueName = newModel.name;
+    [self.dataSource addObject:self.blueName];
 }
 
 - (void)didBluetoothReaceivedErrorCode:(BluetoothErrorCodes)code operation:(BluetoothOperation)operation error:(NSError *)error {
@@ -103,4 +97,5 @@
 - (void)didReceiveData:(id)data {
     
 }
+
 @end

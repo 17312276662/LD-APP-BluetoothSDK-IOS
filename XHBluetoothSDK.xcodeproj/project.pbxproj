@@ -28,6 +28,7 @@
 		A521BC621FCBBAC3007B0E41 /* NSString+YYExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = A521BC5A1FCBBAC3007B0E41 /* NSString+YYExtend.m */; };
 		A52804CF2083B01300696A59 /* RfmAccessControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52804CE2083B01200696A59 /* RfmAccessControl.framework */; };
 		A52804D020843ACC00696A59 /* TerminusLocalizable.strings in Frameworks */ = {isa = PBXBuildFile; fileRef = A521BC2C1FCBB834007B0E41 /* TerminusLocalizable.strings */; };
+		A54DE0C920B2B78F00593E21 /* XHBluetoothDevicesView.m in Sources */ = {isa = PBXBuildFile; fileRef = A54DE0C820B2B78F00593E21 /* XHBluetoothDevicesView.m */; };
 		A55199C41FB1B6A7008BB53E /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = A55199C31FB1B6A7008BB53E /* Foundation+Log.m */; };
 		A55491BD1FC66A9200461B38 /* TSLOpenDoor.m in Sources */ = {isa = PBXBuildFile; fileRef = A55491BC1FC66A9200461B38 /* TSLOpenDoor.m */; };
 		A55491C01FC6C9B700461B38 /* TSLDeviceScan.m in Sources */ = {isa = PBXBuildFile; fileRef = A55491BF1FC6C9B700461B38 /* TSLDeviceScan.m */; };
@@ -72,7 +73,6 @@
 		A5F684691F8E09AC00165368 /* LFOpenDoor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F684671F8E09AC00165368 /* LFOpenDoor.m */; };
 		A5F6846C1F8E0A5100165368 /* XHOpenDoor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F6846B1F8E0A5100165368 /* XHOpenDoor.m */; };
 		A5F6846F1F8E0A6B00165368 /* XHDeviceScan.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F6846E1F8E0A6B00165368 /* XHDeviceScan.m */; };
-		A5F74BBD200F222100D66A5F /* DeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F74BBC200F222100D66A5F /* DeviceViewController.m */; };
 		A5F74BC0200F241B00D66A5F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F74BBF200F241B00D66A5F /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
@@ -127,6 +127,8 @@
 		A521BC5A1FCBBAC3007B0E41 /* NSString+YYExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+YYExtend.m"; sourceTree = "<group>"; };
 		A521BC5B1FCBBAC3007B0E41 /* YYCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYCategory.h; sourceTree = "<group>"; };
 		A52804CE2083B01200696A59 /* RfmAccessControl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RfmAccessControl.framework; path = XHBluetoothSDK/SDK/RfmAccessControl/RfmAccessControl.framework; sourceTree = SOURCE_ROOT; };
+		A54DE0C720B2B78F00593E21 /* XHBluetoothDevicesView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHBluetoothDevicesView.h; sourceTree = "<group>"; };
+		A54DE0C820B2B78F00593E21 /* XHBluetoothDevicesView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHBluetoothDevicesView.m; sourceTree = "<group>"; };
 		A55199C31FB1B6A7008BB53E /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		A55491BB1FC66A9200461B38 /* TSLOpenDoor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSLOpenDoor.h; sourceTree = "<group>"; };
 		A55491BC1FC66A9200461B38 /* TSLOpenDoor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSLOpenDoor.m; sourceTree = "<group>"; };
@@ -216,8 +218,6 @@
 		A5F6846B1F8E0A5100165368 /* XHOpenDoor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHOpenDoor.m; sourceTree = "<group>"; };
 		A5F6846D1F8E0A6B00165368 /* XHDeviceScan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDeviceScan.h; sourceTree = "<group>"; };
 		A5F6846E1F8E0A6B00165368 /* XHDeviceScan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDeviceScan.m; sourceTree = "<group>"; };
-		A5F74BBB200F222100D66A5F /* DeviceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceViewController.h; sourceTree = "<group>"; };
-		A5F74BBC200F222100D66A5F /* DeviceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceViewController.m; sourceTree = "<group>"; };
 		A5F74BBE200F241B00D66A5F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		A5F74BBF200F241B00D66A5F /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -519,6 +519,8 @@
 		A5F684531F8DAD7A00165368 /* XHSDK */ = {
 			isa = PBXGroup;
 			children = (
+				A54DE0C720B2B78F00593E21 /* XHBluetoothDevicesView.h */,
+				A54DE0C820B2B78F00593E21 /* XHBluetoothDevicesView.m */,
 				A5E5506F1F933D7C005A3602 /* XHCacheDate.h */,
 				A5E550701F933D7C005A3602 /* XHCacheDate.m */,
 				A5F6846D1F8E0A6B00165368 /* XHDeviceScan.h */,
@@ -544,8 +546,6 @@
 				A5F684571F8DAD8400165368 /* AppDelegate.m */,
 				A5F684591F8DAD8400165368 /* ViewController.h */,
 				A5F684561F8DAD8400165368 /* ViewController.m */,
-				A5F74BBB200F222100D66A5F /* DeviceViewController.h */,
-				A5F74BBC200F222100D66A5F /* DeviceViewController.m */,
 				A5F74BBE200F241B00D66A5F /* MBProgressHUD.h */,
 				A5F74BBF200F241B00D66A5F /* MBProgressHUD.m */,
 				A5F684581F8DAD8400165368 /* Info.plist */,
@@ -639,12 +639,12 @@
 		A5F683D41F8DA71C00165368 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0910;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = xujw;
 				TargetAttributes = {
 					A5F683DB1F8DA71C00165368 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 8VM9288L8G;
+						DevelopmentTeam = DJA6SD99ZP;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -750,6 +750,7 @@
 				A55538FD1FCE66AC00637750 /* BlueModel.m in Sources */,
 				A5E550401F92088B005A3602 /* AFURLSessionManager.m in Sources */,
 				A5E550431F92088B005A3602 /* AFSecurityPolicy.m in Sources */,
+				A54DE0C920B2B78F00593E21 /* XHBluetoothDevicesView.m in Sources */,
 				A55491C41FC7FE5400461B38 /* OpenUDID.m in Sources */,
 				A5E550621F920D12005A3602 /* NSObject+MJProperty.m in Sources */,
 				A5AA0E561F90AFB90098548F /* LFCallElevatorDown.m in Sources */,
@@ -762,7 +763,6 @@
 				A582B2301FDA981A000545B4 /* DeviceModel.m in Sources */,
 				A5E5507E1F9340A8005A3602 /* ResourceKeyModel.m in Sources */,
 				A5E550711F933D7C005A3602 /* XHCacheDate.m in Sources */,
-				A5F74BBD200F222100D66A5F /* DeviceViewController.m in Sources */,
 				A5E5506E1F92598A005A3602 /* JWHttpTool.m in Sources */,
 				A521BC601FCBBAC3007B0E41 /* RfmSimpleDevice.m in Sources */,
 				A5AA0E5F1F90BEE20098548F /* LFChooseFloor.m in Sources */,
@@ -881,6 +881,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -888,6 +889,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -936,6 +938,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -943,6 +946,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -974,7 +978,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8VM9288L8G;
+				DEVELOPMENT_TEAM = DJA6SD99ZP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/XHBluetoothSDK/SDK",
@@ -985,7 +989,7 @@
 				INFOPLIST_FILE = "/Users/xinhuapro/Git仓库/LD-APP-BluetoothSDK-IOS/XHBluetoothSDK/Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = XH.XHBluetoothSDK;
+				PRODUCT_BUNDLE_IDENTIFIER = com.XHBluetoothSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -994,7 +998,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8VM9288L8G;
+				DEVELOPMENT_TEAM = DJA6SD99ZP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/XHBluetoothSDK/SDK",
@@ -1005,7 +1009,7 @@
 				INFOPLIST_FILE = "/Users/xinhuapro/Git仓库/LD-APP-BluetoothSDK-IOS/XHBluetoothSDK/Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = XH.XHBluetoothSDK;
+				PRODUCT_BUNDLE_IDENTIFIER = com.XHBluetoothSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

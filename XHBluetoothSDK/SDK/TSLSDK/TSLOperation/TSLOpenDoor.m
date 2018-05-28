@@ -58,13 +58,12 @@
     }
     for (BlueModel *model in self.keysArr) {
         if ([model.name isEqualToString:deviceLocalName]){
-            model.rssi = RSSI;
+            
             return;
         }
     }
     BlueModel * newModel = [BlueModel new];
     newModel.name = deviceLocalName;
-    newModel.rssi = RSSI;
     [self.keysArr addObject:newModel];
 }
 

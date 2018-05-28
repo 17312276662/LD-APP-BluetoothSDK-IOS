@@ -65,9 +65,21 @@
                                     @"manufacturerId" : self.manufacturerIdArr[i],
                                     @"buildingName" : self.buildingNameArr[i]
                                     };
-
+            
+            
             [self.deviceArr addObject:dict];
+            
         }
+        /*
+        NSDictionary *testDict = @{@"mac" : @"MJ3_3481F40D5FC1",
+                                   @"typeName" : @"小区门禁",
+                                   @"typeId" : @"1",
+                                   @"passWord" : @"123456",
+                                   @"manufacturerId" : @"1",
+                                   @"buildingName" : @"绿地之窗C-5"
+                                   };
+        [self.deviceArr addObject:testDict];
+         */
         NSString *cachePatch = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
         NSString *filePath = [cachePatch stringByAppendingPathComponent:@"devices.plist"];
         NSURL *fileUrl = [NSURL fileURLWithPath:filePath];

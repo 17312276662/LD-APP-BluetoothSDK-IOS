@@ -7,7 +7,15 @@
 //
 
 #import "XHDeviceScan.h"
-@class XHDeviceScan;
+#import "TSLDeviceScan.h"
+#import <Terminus/TerminusApi.h>
+#import "BlueModel.h"
+@interface XHDeviceScan()
+@property (nonatomic,strong) NSMutableArray *deviceArr;
+@property (nonatomic,weak) TerminusBleCommunicationManager *blueManger;
+@property (nonatomic ,strong)  NSString *blueName;
+@end
+
 @implementation XHDeviceScan
 - (void)initSDK{
     Class class = NSClassFromString(@"LFDeviceScan");
@@ -19,7 +27,6 @@
 - (void)showDevice{
     _macArr = [NSMutableArray array];
     [self showLFDevice];
-    [self showTSLDevice];
 }
 
 - (void)showLFDevice{
@@ -31,13 +38,15 @@
 }
 
 - (void)showTSLDevice{
+    /*
     Class class = NSClassFromString(@"TSLDeviceScan");
     NSObject *scan = [[class alloc] init];
     
-    SEL selector = NSSelectorFromString(@"initAndSettingEquipment");
-//    NSMutableArray *arr = [NSMutableArray array];
-//    arr = [scan performSelector:selector];
+    SEL selector = NSSelectorFromString(@"showDevice");
+    NSMutableArray *arr = [NSMutableArray array];
+    arr = [scan performSelector:selector];
     [scan performSelector:selector];
-//    [_macArr addObjectsFromArray:arr];
+    [_macArr addObjectsFromArray:arr];
+     */
 }
 @end
